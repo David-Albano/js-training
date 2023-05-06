@@ -97,7 +97,7 @@ main {
 .section-form {
     max-width: 65%;
     min-height: 100vh;
-    background-color: #c1d1f3;
+    background-color: #cbd6ee;
 }
 
 .div-form {
@@ -140,10 +140,15 @@ input::placeholder {
 button {
     min-height: 60px;
     max-height: 60px;
-    background-color: rgb(33, 9, 47);
+    background-color: rgb(41, 11, 58);
     color: white;
     border-radius: 10px;
     margin-top: 20px;
     font-size: 18px;
     border-style: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(57, 12, 83);
 }
