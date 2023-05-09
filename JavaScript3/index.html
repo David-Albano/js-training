@@ -20,16 +20,16 @@
         <div class="card back-side">
         </div>
         <div class="card back">
-            <div class="card-cvc">000</div>
+            <div id="card-cvc">000</div>
         </div>
         <div class="card front-side">
         </div>
         <div class="card front">
-            <div class="card-logo"></div>
-            <div class="card-number">0000 0000 0000 0000</div>
-            <div class="name-and-date">
-                <div class="card-name">JANE APPLESEED</div>
-                <div class="card-date">00/00</div>
+            <div id="card-logo"></div>
+            <div id="card-number">0000 0000 0000 0000</div>
+            <div id="name-and-date">
+                <div id="card-name">DAVID AFONSO</div>
+                <div id="card-date">00/00</div>
             </div>
         </div>
         
@@ -40,22 +40,22 @@
             <div class="div-form">
                 <label>CARDHOLDER NAME</label>
                 <br>
-                    <input class="input-box cardNumber" tabindex="0" placeholder="e.g. Jane Appleseed">
+                    <input class="input-box" id="cardName" tabindex="0" placeholder="e.g. David Afonso">
                 <label>CARD NUMBER</label>
                 <br>
-                    <input class="input-box cardName" tabindex="0" placeholder="e.g. 1847 9462 4581 0000">
+                    <input class="input-box" id="cardNumber" tabindex="0" placeholder="e.g. 1847 9462 4581 0000" maxlength="19">
 
                 <div class="flex-input">
                     <div class="input-f">
                         <label>EXP. DATE (MM/YY)</label>
                         <br>
-                        <input class="input-box cardDate" tabindex="0" placeholder="MM/YY">
+                        <input class="input-box" id="cardDate" tabindex="0" placeholder="MM/YY" maxlength="5">
                     </div>
 
                     <div class="input-f">
                         <label>CVC</label>
                         <br>
-                        <input class="input-box cardCVC" tabindex="0" placeholder="e.g. 123">
+                        <input class="input-box" id="cardCVC" tabindex="0" placeholder="e.g. 123" maxlength="3">
                     </div>
                 </div>
                 

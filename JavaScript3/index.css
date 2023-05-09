@@ -36,7 +36,7 @@ main {
     left : 9.9rem;
 }
 
-.card-logo{
+#card-logo{
     background: no-repeat;
     background-image: url(images/card-logo.svg);
     margin-top: 16px;
@@ -47,7 +47,7 @@ main {
     max-height: 3rem;
 }
 
-.card-number {
+#card-number {
     margin-top: 3rem;
     margin-left: 19px;
     width: 90%;
@@ -57,7 +57,7 @@ main {
     color: white;
 }
 
-.name-and-date {
+#name-and-date {
     margin-top: 0.7rem;
     margin-left: 19.2px;
     display: flex;
@@ -70,7 +70,7 @@ main {
     color: white;
 }
 
-.card-date {
+#card-date {
     text-align: end;
 }
 
@@ -87,7 +87,7 @@ main {
     left : 17.3rem;
 } 
 
-.card-cvc {
+#card-cvc {
     margin-top: 6rem;
     margin-left: 19.8rem;
     width: 10%;

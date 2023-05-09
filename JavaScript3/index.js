@@ -1,44 +1,57 @@
-const allInputs = document.querySelectorAll('.input-box')
+const cName = document.getElementById('cardName');
+const cNum = document.getElementById('cardNumber');
+const expDate = document.getElementById('cardDate');
+const cvc = document.getElementById('cardCVC');
 
-allInputs.forEach((input, index) => {
-    input.addEventListener("click", updateCardInfo(index))
+
+const cardNameUpdate = document.getElementById('card-name');
+const cardNumUpdate = document.getElementById('card-number');
+const expDateUpdate = document.getElementById('card-date');
+const updateCvcUpdate = document.getElementById('card-cvc');
+
+
+cvc.addEventListener('input', () => {
+
+    let str = '000'
+
+    let inputedByUser = str.substr(cvc.value.length)+str.substr(3, 0)+cvc.value;
+
+    updateCvcUpdate.innerHTML = inputedByUser
+
 })
 
+cNum.addEventListener('input', () => {
 
-function UpdatecardNumber(cardNumber){
-    cardNumber.innerHTML = 'testing'
-}
-
-
-function UpdatecardName(cardName){
-    cardName.innerHTML = 'testing'
-}   
+    let str = '0000 0000 0000 0000'
+    let inputedByUser = str.substr(0, 0)+cNum.value+str.substr(cNum.value.length);
+    cardNumUpdate.innerHTML = inputedByUser
 
 
-function UpdatecardDate(cardDate){
-    cardDate.innerHTML = 'testing'
-}
+    let start1 = inputedByUser.substr(0, 1)
+    if (start1 === '1') {
+        let str = '0000 00000 000000'
+        let inputedByUser = str.substr(0, 0)+cNum.value+str.substr(cNum.value.length);
 
-
-function UpdatecardCVC(cardCVC){
-    cardCVC.innerHTML = 'testing'
-}
-
-function updateCardInfo(index) {
-    const cardNumber = allInputs[index].classList.contains('cardNumber')
-    const cardName = allInputs[index].classList.contains('cardName')
-    const cardDate = allInputs[index].classList.contains('cardDate')
-    const cardCVC = allInputs[index].classList.contains('cardCVC')
-
-
-    if(cardNumber){
-        UpdatecardNumber(cardNumber)
-    }else if(cardName){
-        UpdatecardName(cardName)
-    }else if(cardDate){
-        UpdatecardName(cardDate)
-    }else if(cardCVC){
-        UpdatecardCVC(cardCVC)
+        cardNumUpdate.innerHTML = inputedByUser
     }
+})
 
-}
+cName.addEventListener('input', () => {
+
+    let str = ''
+
+    let inputedByUser = str.substr(0, 0)+cName.value+str.substr(cName.value.length);
+
+    cardNameUpdate.innerHTML = inputedByUser
+
+})
+
+expDate.addEventListener('input', () => {
+
+    let str = '00/00'
+
+    let inputedByUser = str.substr(0, 0)+expDate.value+str.substr(expDate.value.length);
+
+    expDateUpdate.innerHTML = inputedByUser  
+
+})
