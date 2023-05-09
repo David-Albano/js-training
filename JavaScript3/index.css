@@ -30,6 +30,11 @@ main {
     top : 9.7rem;
     left : 10.1rem;
 }
+.front-side {
+    background-color: rgb(56, 7, 85);
+    top : 9.5rem;
+    left : 9.9rem;
+}
 
 .card-logo{
     background: no-repeat;
@@ -53,8 +58,8 @@ main {
 }
 
 .name-and-date {
-    margin-top: 0.8rem;
-    margin-left: 19px;
+    margin-top: 0.7rem;
+    margin-left: 19.2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,9 +81,15 @@ main {
     left : 17rem;
 } 
 
+.back-side {
+    background-color: rgb(56, 7, 85);
+    top : 20.5rem;
+    left : 17.3rem;
+} 
+
 .card-cvc {
     margin-top: 6rem;
-    margin-left: 20rem;
+    margin-left: 19.8rem;
     width: 10%;
     height: 1.5rem;
     text-align: center;
@@ -97,7 +108,7 @@ main {
 .section-form {
     max-width: 65%;
     min-height: 100vh;
-    background-color: #cbd6ee;
+    background-color: #dce5fa;
 }
 
 .div-form {
@@ -134,7 +145,7 @@ input::placeholder {
 }
 
 .input-f {
-    max-width: 47%;
+    max-width: 48%;
 }
 
 button {
