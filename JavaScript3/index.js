@@ -1,57 +1,114 @@
-const cName = document.getElementById('cardName');
-const cNum = document.getElementById('cardNumber');
-const expDate = document.getElementById('cardDate');
-const cvc = document.getElementById('cardCVC');
-
+const cardName = document.getElementById('cardName');
+const cardNumber = document.getElementById('cardNumber');
+const cardExpDateMonth = document.getElementById('cardDateMonth');
+const cardExpDateYear = document.getElementById('cardDateYear');
+const cardCVC = document.getElementById('cardCVC');
 
 const cardNameUpdate = document.getElementById('card-name');
 const cardNumUpdate = document.getElementById('card-number');
-const expDateUpdate = document.getElementById('card-date');
+const expDateMonthUpdate = document.getElementById('card-date-month');
+const expDateYearUpdate = document.getElementById('card-date-year');
 const updateCvcUpdate = document.getElementById('card-cvc');
 
 
-cvc.addEventListener('input', () => {
+cardName.addEventListener('keydown', (event) => {
+    
+    const keyCode = event.keyCode || event.which;
+    
+    if (keyCode >= 48 && keyCode <= 57) {
+        event.preventDefault();
+    }
+});
 
-    let str = '000'
+cardNumber.addEventListener('keydown', (event) => {
+    
+    const keyCode = event.keyCode || event.which;
+    
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
+        event.preventDefault();
+    }
+});
 
-    let inputedByUser = str.substr(cvc.value.length)+str.substr(3, 0)+cvc.value;
+cardExpDateMonth.addEventListener('keydown', (event) => {
+    
+    const keyCode = event.keyCode || event.which;
+    
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
+        event.preventDefault();
+    }
+});
 
-    updateCvcUpdate.innerHTML = inputedByUser
+cardExpDateYear.addEventListener('keydown', (event) => {
+    
+    const keyCode = event.keyCode || event.which;
+    
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
+        event.preventDefault();
+    }
+});
 
-})
+cardCVC.addEventListener('keydown', (event) => {
+    
+    const keyCode = event.keyCode || event.which;
+    
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
+        event.preventDefault();
+    }
+});
 
-cNum.addEventListener('input', () => {
 
+
+
+
+cardNumber.addEventListener('input', () => {
+    
     let str = '0000 0000 0000 0000'
-    let inputedByUser = str.substr(0, 0)+cNum.value+str.substr(cNum.value.length);
+    let inputedByUser = str.substr(0, 0) + cardNumber.value + str.substr(cardNumber.value.length);
     cardNumUpdate.innerHTML = inputedByUser
-
-
+    
     let start1 = inputedByUser.substr(0, 1)
     if (start1 === '1') {
         let str = '0000 00000 000000'
-        let inputedByUser = str.substr(0, 0)+cNum.value+str.substr(cNum.value.length);
+        let inputedByUser = str.substr(0, 0) + cardNumber.value + str.substr(cardNumber.value.length);
 
         cardNumUpdate.innerHTML = inputedByUser
     }
 })
 
-cName.addEventListener('input', () => {
-
+cardName.addEventListener('input', () => {
+    
     let str = ''
 
-    let inputedByUser = str.substr(0, 0)+cName.value+str.substr(cName.value.length);
+    let inputedByUser = str.substr(0, 0) + cardName.value.toUpperCase() + str.substr(cardName.value.length);
 
     cardNameUpdate.innerHTML = inputedByUser
 
+    cardNameUpdate.innerHTML = inputedByUser === '' ? 'DAVID AFONSO' : inputedByUser;
 })
 
-expDate.addEventListener('input', () => {
+cardExpDateMonth.addEventListener('input', () => {
+    
+    let str = '00'
 
-    let str = '00/00'
+    let inputedByUser = str.substr(cardExpDateMonth.value.length) + cardExpDateMonth.value;
 
-    let inputedByUser = str.substr(0, 0)+expDate.value+str.substr(expDate.value.length);
+    expDateMonthUpdate.innerHTML = inputedByUser
+})
 
-    expDateUpdate.innerHTML = inputedByUser  
+cardExpDateYear.addEventListener('input', () => {
 
+    let str = '00'
+    
+    let inputedByUser = str.substr(cardExpDateYear.value.length) + cardExpDateYear.value;
+    
+    expDateYearUpdate.innerHTML = inputedByUser
+})
+
+cardCVC.addEventListener('input', () => {
+
+    let str = '000'
+
+    let inputedByUser = str.substr(cardCVC.value.length) + cardCVC.value;
+
+    updateCvcUpdate.innerHTML = inputedByUser
 })

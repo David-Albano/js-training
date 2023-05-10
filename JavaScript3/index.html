@@ -29,7 +29,11 @@
             <div id="card-number">0000 0000 0000 0000</div>
             <div id="name-and-date">
                 <div id="card-name">DAVID AFONSO</div>
-                <div id="card-date">00/00</div>
+                <div class="date-fields">
+                    <div id="card-date-month">00</div>
+                    <div class="slash">/</div>
+                    <div id="card-date-year">00</div>
+                </div>
             </div>
         </div>
         
@@ -40,16 +44,22 @@
             <div class="div-form">
                 <label>CARDHOLDER NAME</label>
                 <br>
-                    <input class="input-box" id="cardName" tabindex="0" placeholder="e.g. David Afonso">
+                    <input class="input-box" id="cardName" tabindex="0" placeholder="e.g. David Afonso" maxlength="21">
                 <label>CARD NUMBER</label>
                 <br>
                     <input class="input-box" id="cardNumber" tabindex="0" placeholder="e.g. 1847 9462 4581 0000" maxlength="19">
 
                 <div class="flex-input">
                     <div class="input-f">
-                        <label>EXP. DATE (MM/YY)</label>
+                        <label>EXP. MONTH</label> 
                         <br>
-                        <input class="input-box" id="cardDate" tabindex="0" placeholder="MM/YY" maxlength="5">
+                        <input class="input-box" id="cardDateMonth" tabindex="0" placeholder="MM" maxlength="2">
+                    </div>
+
+                    <div class="input-f">
+                        <label>EXP. YEAR</label>
+                        <br>
+                        <input class="input-box" id="cardDateYear" tabindex="0" placeholder="YY" maxlength="2">
                     </div>
 
                     <div class="input-f">

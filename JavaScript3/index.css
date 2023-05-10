@@ -70,10 +70,29 @@ main {
     color: white;
 }
 
-#card-date {
-    text-align: end;
+.date-fields {
+    display: flex;
+    width: 20%;
 }
 
+#card-name {
+    max-width: 80%;
+}
+
+#card-date-month {
+    max-width: 28px;
+    /* background-color: yellow; */
+}
+
+#card-date-year {    
+    max-width: 25px;
+    /* background-color: green; */
+}
+
+.slash {
+    max-width: 10px;
+    /* background-color: red; */
+}
 
 .back {
     background-image: url(images/bg-card-back.png);
@@ -145,7 +164,7 @@ input::placeholder {
 }
 
 .input-f {
-    max-width: 48%;
+    max-width: 30%;
 }
 
 button {
