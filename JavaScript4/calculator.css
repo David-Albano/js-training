@@ -16,8 +16,8 @@ main {
 }
 
 .div-calculator {
-    margin: 0 auto;;
-    width: 45%;
+    margin: 0 auto;
+    width: 44%;
     height: 100%;
 }
 
@@ -29,6 +29,7 @@ main {
 }
 
 .title {
+    margin-top: 1.5rem;
     width: 30%;
     height: 100%;
     font-size: 35px; 
@@ -38,6 +39,7 @@ main {
 }
 
 .options {
+    margin-top: 1.5rem;
     width: 25%;
     height: 100%;
     display: flex;
@@ -101,6 +103,10 @@ main {
     background-color: rgb(36, 44, 66);
 }
 
+.circle {
+    cursor: pointer;
+}
+
 #circle-selector-start {
     width: 22%;
     height: 80%;
@@ -126,9 +132,41 @@ main {
 }
 
 .calculator-body {
+    margin-top: 3.1rem;
     width: 100%;
-    height: 85%;
-    background-color: blue;
+    height: 75%;
 }
 
     
+ /* Calculator body */
+
+#calculator-screen {
+    width: 100%;
+    height: 15%;
+    border-radius: 0.5rem;
+    padding-top: 1%;
+    background-color: rgb(24, 32, 52);
+}
+
+#calculator-input {
+    margin: auto;
+    width: 94%;
+    height: 90%;
+    background-color: rgb(110, 110, 110);
+}
+
+#calculator-buttons {
+    margin-top: 1rem;
+    padding-top: 3%;
+    width: 100%;
+    height: 75%;
+    border-radius: 0.5rem;
+    background-color: rgb(36, 44, 66);
+}
+
+#buttons-body {
+    margin: auto;
+    width: 94%;
+    height: 95%;
+    background-color: rgb(139, 139, 139);
+}
