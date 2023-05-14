@@ -38,7 +38,17 @@ function make_operation(index) {
     clicked_button = all_buttons[index]
     button_value = clicked_button.querySelector('span')
     button_value = button_value.innerHTML
-    // console.log(button_value)
+
+    if (button_value === 'RESET') {
+        display.innerHTML = '0'
+        return
+    }
+    else if (button_value === 'DEL') {
+        return del_value()
+    }
+    else if (button_value === '.') {
+        return input_dot(button_value)
+    }
 
     if (display.innerHTML === '0') {
         display.innerHTML = ''
@@ -63,10 +73,29 @@ function division(args) {
     return
 }
 
-function del(args) {
-    return
+function input_dot(button_value) {
+
+    let value_split = display.innerHTML.split('')
+
+    if (value_split.includes(button_value)) {
+        return
+    }
+
+    display.innerHTML += button_value
 }
 
-function reset(args) {
+function del_value() {
+    if (display.innerHTML === '0') {
+        return
+    }
+    
+    let value_split = display.innerHTML.split('')
+    value_deleted = value_split.slice(0 , -1)
+    display.innerHTML = value_deleted.join('')
+
+    if (display.innerHTML.length == 0) {
+        display.innerHTML = '0'
+    }
+
     return
 }
