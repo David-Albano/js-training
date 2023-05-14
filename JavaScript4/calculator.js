@@ -38,7 +38,7 @@ function make_operation(index) {
     clicked_button = all_buttons[index]
     button_value = clicked_button.querySelector('span')
     button_value = button_value.innerHTML
-    console.log(button_value)
+    // console.log(button_value)
 
     if (display.innerHTML === '0') {
         display.innerHTML = ''
@@ -48,5 +48,25 @@ function make_operation(index) {
 }
 
 function sum(args) {
-    pass
+    return
+}
+
+function sus(args) {
+    return
+}
+
+function multiplication(args) {
+    return
+}
+
+function division(args) {
+    return
+}
+
+function del(args) {
+    return
+}
+
+function reset(args) {
+    return
 }
