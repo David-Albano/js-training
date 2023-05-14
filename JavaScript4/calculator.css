@@ -210,12 +210,12 @@ h4 {
     box-shadow: 3px 3px rgb(180, 165, 151);
 }
 
-h3 {
+span {
     font-size: 30px;
     color: rgb(68, 75, 90);
 }
 
-#reset h3, #equal h3, #del h3 {
+#reset span, #equal span, #del span {
     color: white;
 }
 
@@ -228,7 +228,7 @@ h3 {
     box-shadow: 3px 3px hsl(224, 28%, 35%);
 }
 
-#reset h3, #del h3 {
+#reset span, #del span {
     font-size: 23px;
 }
 

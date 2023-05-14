@@ -1,114 +1,52 @@
-const cardName = document.getElementById('cardName');
-const cardNumber = document.getElementById('cardNumber');
-const cardExpDateMonth = document.getElementById('cardDateMonth');
-const cardExpDateYear = document.getElementById('cardDateYear');
-const cardCVC = document.getElementById('cardCVC');
+const btn_0 = document.getElementById('0')
+const btn_1 = document.getElementById('1')
+const btn_2 = document.getElementById('2')
+const btn_3 = document.getElementById('3')
+const btn_4 = document.getElementById('4')
+const btn_5 = document.getElementById('5')
+const btn_6 = document.getElementById('6')
+const btn_7 = document.getElementById('7')
+const btn_8 = document.getElementById('8')
+const btn_9 = document.getElementById('9')
 
-const cardNameUpdate = document.getElementById('card-name');
-const cardNumUpdate = document.getElementById('card-number');
-const expDateMonthUpdate = document.getElementById('card-date-month');
-const expDateYearUpdate = document.getElementById('card-date-year');
-const updateCvcUpdate = document.getElementById('card-cvc');
+const btn_sum = document.getElementById('sum')
+const btn_sus = document.getElementById('sus')
+const btn_multiplication = document.getElementById('multiplication')
+const btn_division = document.getElementById('division')
 
+const btn_dot = document.getElementById('dot')
+const btn_del = document.getElementById('del')
+const btn_reset = document.getElementById('reset')
+const btn_equal = document.getElementById('equal')
 
-cardName.addEventListener('keydown', (event) => {
-    
-    const keyCode = event.keyCode || event.which;
-    
-    if (keyCode >= 48 && keyCode <= 57) {
-        event.preventDefault();
-    }
-});
-
-cardNumber.addEventListener('keydown', (event) => {
-    
-    const keyCode = event.keyCode || event.which;
-    
-    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
-        event.preventDefault();
-    }
-});
-
-cardExpDateMonth.addEventListener('keydown', (event) => {
-    
-    const keyCode = event.keyCode || event.which;
-    
-    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
-        event.preventDefault();
-    }
-});
-
-cardExpDateYear.addEventListener('keydown', (event) => {
-    
-    const keyCode = event.keyCode || event.which;
-    
-    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
-        event.preventDefault();
-    }
-});
-
-cardCVC.addEventListener('keydown', (event) => {
-    
-    const keyCode = event.keyCode || event.which;
-    
-    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 9 && keyCode !== 37 && keyCode !== 39) {
-        event.preventDefault();
-    }
-});
+const display = document.getElementById('display')
 
 
+const all_buttons = [
+    btn_0, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6,
+    btn_7, btn_8, btn_9, btn_sum, btn_sus, btn_multiplication, 
+    btn_division, btn_del, btn_reset, btn_equal, btn_dot
+]
 
-
-
-cardNumber.addEventListener('input', () => {
-    
-    let str = '0000 0000 0000 0000'
-    let inputedByUser = str.substr(0, 0) + cardNumber.value + str.substr(cardNumber.value.length);
-    cardNumUpdate.innerHTML = inputedByUser
-    
-    let start1 = inputedByUser.substr(0, 1)
-    if (start1 === '1') {
-        let str = '0000 00000 000000'
-        let inputedByUser = str.substr(0, 0) + cardNumber.value + str.substr(cardNumber.value.length);
-
-        cardNumUpdate.innerHTML = inputedByUser
-    }
+all_buttons.forEach((clicked_button, index) => {
+    clicked_button.addEventListener('click', () => {
+        make_operation(index)
+    })
 })
 
-cardName.addEventListener('input', () => {
-    
-    let str = ''
+function make_operation(index) {
+    clicked_button = all_buttons[index]
+    button_value = clicked_button.querySelector('span')
+    button_value = button_value.innerHTML
+    console.log(button_value)
 
-    let inputedByUser = str.substr(0, 0) + cardName.value.toUpperCase() + str.substr(cardName.value.length);
+    if (display.innerHTML === '0') {
+        display.innerHTML = ''
+    }
 
-    cardNameUpdate.innerHTML = inputedByUser
+    display.innerHTML += button_value
+}
 
-    cardNameUpdate.innerHTML = inputedByUser === '' ? 'DAVID AFONSO' : inputedByUser;
-})
-
-cardExpDateMonth.addEventListener('input', () => {
-    
-    let str = '00'
-
-    let inputedByUser = str.substr(cardExpDateMonth.value.length) + cardExpDateMonth.value;
-
-    expDateMonthUpdate.innerHTML = inputedByUser
-})
-
-cardExpDateYear.addEventListener('input', () => {
-
-    let str = '00'
-    
-    let inputedByUser = str.substr(cardExpDateYear.value.length) + cardExpDateYear.value;
-    
-    expDateYearUpdate.innerHTML = inputedByUser
-})
-
-cardCVC.addEventListener('input', () => {
-
-    let str = '000'
-
-    let inputedByUser = str.substr(cardCVC.value.length) + cardCVC.value;
-
-    updateCvcUpdate.innerHTML = inputedByUser
-})
+function sum(args) {
+    pass
+}
