@@ -21,12 +21,13 @@ const btn_equal = document.getElementById('equal')
 
 const display = document.getElementById('display')
 
-
 const all_buttons = [
     btn_0, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6,
     btn_7, btn_8, btn_9, btn_sum, btn_sus, btn_multiplication, 
     btn_division, btn_del, btn_reset, btn_equal, btn_dot
 ]
+
+const forbiddenChars = ['+', '-', '*', '/', '.'];
 
 all_buttons.forEach((clicked_button, index) => {
     clicked_button.addEventListener('click', () => {
@@ -49,6 +50,33 @@ function make_operation(index) {
     else if (button_value === '.') {
         return input_dot(button_value)
     }
+    else if (button_value === '+') {
+        if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
+            return
+        }
+        return sum(button_value)
+    }
+    else if (button_value === '-') {
+        if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
+            return
+        }
+        return sus(button_value)
+    }
+    else if (button_value === '*') {
+        if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
+            return
+        }
+        return multiplication(button_value)
+    }
+    else if (button_value === '/') {
+        if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
+            return
+        }
+        return division(button_value)
+    }
+    // else if (button_value === '=') {
+    //     return input_dot(button_value)
+    // }
 
     if (display.innerHTML === '0') {
         display.innerHTML = ''
@@ -57,28 +85,43 @@ function make_operation(index) {
     display.innerHTML += button_value
 }
 
-function sum(args) {
+function sum(button_value) {
+    let value_operation = ''
+    display.innerHTML += button_value
+    value_operation += display.innerHTML
+    return  value_operation
+}
+
+function sus(button_value) {
+    let value_operation = ''
+    display.innerHTML += button_value
+    value_operation += display.innerHTML
+    console.log(value_operation)
     return
 }
 
-function sus(args) {
+function multiplication(button_value) {
+    let value_operation = ''
+    display.innerHTML += button_value
+    value_operation += display.innerHTML
+    console.log(value_operation)
     return
 }
 
-function multiplication(args) {
+function division(button_value) {
+    let value_operation = ''
+    display.innerHTML += button_value
+    value_operation += display.innerHTML
+    console.log(value_operation)
     return
 }
 
-function division(args) {
-    return
-}
+function input_dot(button_value,) {
 
-function input_dot(button_value) {
+    let value_split = display.innerHTML.split('') 
 
-    let value_split = display.innerHTML.split('')
-
-    if (value_split.includes(button_value)) {
-        return
+    if (value_split.includes(button_value) || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
+        return;
     }
 
     display.innerHTML += button_value
