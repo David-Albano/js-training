@@ -28,6 +28,10 @@ const all_buttons = [
 ]
 
 const forbiddenChars = ['+', '-', '*', '/', '.'];
+const math_operators = ['+', '-', '*', '/'];
+
+const final_operations = []
+const final_result = ['']
 
 all_buttons.forEach((clicked_button, index) => {
     clicked_button.addEventListener('click', () => {
@@ -42,6 +46,7 @@ function make_operation(index) {
 
     if (button_value === 'RESET') {
         display.innerHTML = '0'
+        final_operations.splice(0, final_operations.length)
         return
     }
     else if (button_value === 'DEL') {
@@ -50,69 +55,56 @@ function make_operation(index) {
     else if (button_value === '.') {
         return input_dot(button_value)
     }
-    else if (button_value === '+') {
+    else if (math_operators.includes(button_value)) {
         if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
             return
         }
-        return sum(button_value)
+        return add_operations(button_value)
     }
-    else if (button_value === '-') {
+    else if (button_value === '=') {
         if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
             return
         }
-        return sus(button_value)
+        return evaluate_operation()
     }
-    else if (button_value === '*') {
-        if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
-            return
-        }
-        return multiplication(button_value)
-    }
-    else if (button_value === '/') {
-        if (display.innerHTML === '0' || forbiddenChars.some(char => display.innerHTML.endsWith(char))) {
-            return
-        }
-        return division(button_value)
-    }
-    // else if (button_value === '=') {
-    //     return input_dot(button_value)
-    // }
 
     if (display.innerHTML === '0') {
         display.innerHTML = ''
+    } 
+    else if (display.innerHTML === final_result[0]) {
+        display.innerHTML = ''
+        final_result[0] = ''
     }
 
     display.innerHTML += button_value
 }
 
-function sum(button_value) {
+function add_operations(button_value) {
     let value_operation = ''
     display.innerHTML += button_value
     value_operation += display.innerHTML
+    final_operations.push(value_operation)
+    if (final_operations.length > 1){
+        final_operations.shift()
+    }
+    console.log(final_operations)
     return  value_operation
 }
 
-function sus(button_value) {
+function evaluate_operation() {
     let value_operation = ''
-    display.innerHTML += button_value
     value_operation += display.innerHTML
-    console.log(value_operation)
-    return
-}
+    final_operations.push(value_operation)
+    if (final_operations.length > 1){
+        final_operations.shift()
+    }
 
-function multiplication(button_value) {
-    let value_operation = ''
-    display.innerHTML += button_value
-    value_operation += display.innerHTML
-    console.log(value_operation)
-    return
-}
+    result = eval(final_operations[0])
+    display.innerHTML = result.toString()
 
-function division(button_value) {
-    let value_operation = ''
-    display.innerHTML += button_value
-    value_operation += display.innerHTML
-    console.log(value_operation)
+    final_operations.splice(0, final_operations.length)
+    final_result[0] = result.toString()
+    
     return
 }
 
