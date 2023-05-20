@@ -9,7 +9,7 @@ html, body{
     padding: 0px;
 }
 
-main {
+.main-t1 {
     width: 100%;
     height: 100%;
     background-color: rgb(58, 71, 100);
@@ -28,7 +28,7 @@ main {
     justify-content: space-between;
 }
 
-.title {
+.title-t1 {
     margin-top: 1.5rem;
     width: 30%;
     height: 100%;
@@ -47,7 +47,7 @@ main {
     align-items: center;
 }
 
-.theme {
+.theme-t1 {
     font-size:14px;
     width: 50%;
     text-align: end;
@@ -60,7 +60,7 @@ main {
     position: relative;
 }
 
-.numbers {
+.numbers-t1 {
     width: 80%;
     height: 15%;
     padding: 0px 5px 0px 5px;
@@ -90,7 +90,7 @@ main {
     text-align: end;
 }
 
-#div-selector {
+.div-selector-t1 {
     width: 85%;
     height: 20%;
     border-radius: 10px;
@@ -107,7 +107,7 @@ main {
     cursor: pointer;
 }
 
-#circle-selector-start {
+.circle-selector-start-t1 {
     width: 24%;
     height: 80%;
     margin-left: 4px;
@@ -115,20 +115,20 @@ main {
     background-color: rgb(208, 63, 47);
 }
 
-#circle-selector-center {
+.circle-selector-center-t1 {
     width: 23%;
     height: 80%;
     margin: 0 auto;
     border-radius: 100%;
-    background-color: yellow;
+    opacity: 0;
 }
 
-#circle-selector-end {
+.circle-selector-end-t1 {
     width: 22%;
     height: 80%;
     margin-right: 4px;
     border-radius: 100%;
-    background-color: yellow;
+    opacity: 0;
 }
 
 .calculator-body {
@@ -140,7 +140,7 @@ main {
     
  /* Calculator body */
 
-#calculator-screen {
+.calculator-screen-t1 {
     width: 100%;
     height: 15%;
     border-radius: 0.5rem;
@@ -158,12 +158,12 @@ main {
     align-items: center;
 }
 
-h4 {
+.h4-t1 {
     font-size: 32px;
     color: white;
 }
 
-#calculator-buttons {
+.calculator-buttons-t1 {
     margin-top: 1rem;
     width: 100%;
     height: 80%;
@@ -205,17 +205,17 @@ h4 {
     transition: 0.3s;
 }
 
-.btn-number {
+.btn-number-t1 {
     background-color: rgb(234, 227, 220);
     box-shadow: 3px 3px rgb(180, 165, 151);
 }
 
-span {
+.span-t1 {
     font-size: 30px;
     color: rgb(68, 75, 90);
 }
 
-#reset span, #equal span, #del span {
+.span-nan-t1, .span-nan-t1, .span-nan-t1 {
     color: white;
 }
 
@@ -223,17 +223,137 @@ span {
     width: 49%;
 }
 
-#reset, #del {
+.span-nan-t1, .span-nan-t1 {
+    font-size: 23px;
+}
+
+.reset-t1, .del-t1 {
     background-color: hsl(225, 21%, 49%);
     box-shadow: 3px 3px hsl(224, 28%, 35%);
 }
 
-#reset span, #del span {
-    font-size: 23px;
-}
-
-#equal {
+.equal-t1 {
     background-color: rgb(208, 63, 47);
     box-shadow: 3px 3px rgb(147, 38, 26);
     margin-right: -15px;
 }
+
+
+/*** ------- CLASES FOR THEME 2 ------- ***/
+
+/* .main-t2 {
+    background-color: hsl(0, 0%, 90%);
+}
+
+.title-t2, .theme-t2, .numbers-t2, .h4-t2 {
+    color: rgb(255, 255, 255);
+}
+
+
+.div-selector-t2 {
+background-color: blue;
+}
+
+.circle-selector-start-t2 {
+    background-color: blue; 
+}
+
+.circle-selector-center-t2 {
+    background-color: blue;
+}
+
+.circle-selector-end-t2 {
+    background-color: blue;
+}
+
+.calculator-screen-t2 {
+    background-color: blue;
+}
+
+.calculator-buttons-t2 {
+    background-color: blue;
+}
+
+.btn-number-t2 {
+    color: rgb(53, 53, 44);
+}
+
+.span-nan-t2 {
+    color: rgb(255, 255, 255);
+}
+
+.reset-t2, .del-t2 {
+    background-color: blue;
+}
+
+.equal-t2 {
+    background-color: blue;
+} */
+
+
+
+/*** ------- CLASES FOR THEME 3 ------- ***/
+
+/* .main-t3 {
+
+}
+
+.title-t3 {
+
+}
+
+.theme-t3 {
+
+}
+
+.numbers-t3 {
+
+}
+
+.div-selector-t3 {
+
+}
+
+.circle-selector-start-t3 {
+
+}
+
+.circle-selector-center-t3 {
+
+}
+
+.circle-selector-end-t3 {
+
+}
+
+.calculator-screen-t3 {
+
+}
+
+.h4-t3 {
+
+}
+
+.calculator-buttons-t3 {
+
+}
+
+.btn-number-t3 {
+
+}
+
+.span-nan-t3 {
+
+}
+
+.reset-t3, .del-t3 {
+
+}
+
+.equal-t3 {
+
+} */
+
+
+
+

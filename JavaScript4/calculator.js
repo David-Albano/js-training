@@ -87,7 +87,7 @@ function add_operations(button_value) {
     if (final_operations.length > 1){
         final_operations.shift()
     }
-    console.log(final_operations)
+
     return  value_operation
 }
 
@@ -134,3 +134,58 @@ function del_value() {
 
     return
 }
+
+// -------- Logic for Theme switch ---------- //
+
+// const selectors = [
+//     '.main-t1', '.title-t1', '.theme-t1', '.numbers-t1', '.div-selector-t1',
+//     '.circle-selector-start-t1', '.circle-selector-center-t1', 
+//     '.circle-selector-end-t1', '.calculator-screen-t1', '.calculator-buttons-t1',
+//     '.btn-number-t1', '.span-t1', '.span-nan-t1', '.reset-t1', '.del-t1', '.equal-t1'
+// ];
+
+// const elements_to_switch = document.querySelectorAll(selectors.join(','));
+// const circles = document.querySelectorAll('.circle');
+
+// var theme_number = ''
+
+// circles.forEach((circle, index) => {
+//     circle.addEventListener('click', () => {
+//         selectTheme(index)
+//     })
+// })
+
+
+// function selectTheme(index) {
+//     circle_selected = circles[index]
+    
+//     if (circle_selected.classList.contains('c-1')) {
+//         theme_number = '1'
+//     }
+//     else if (circle_selected.classList.contains('c-2')) {
+//         theme_number = '2'
+//     }
+//     else if (circle_selected.classList.contains('c-3')) {
+//         theme_number = '3'
+//     }
+
+//     return switchTheme(theme_number)
+
+// }
+
+// function switchTheme(theme_number) {
+//     elements_to_switch.forEach((element, index) => {
+//         let selector = selectors[index]
+//         if (selector) {
+//             let new_selector = selector.slice(0, -1)
+//             new_selector += theme_number
+//             selectors[index] = new_selector
+
+//             selector_to_remove = selector
+//             selector_to_add = new_selector.slice(1)
+
+//             element.classList.remove(selector_to_remove)
+//             element.classList.add(selector_to_add)
+//         }
+//     })
+// }
