@@ -142,30 +142,113 @@
 
 
 
-const john = {
-    fullName: 'John Smith',
-    mass: 78,
-    height: 1.6,
+// const john = {
+//     fullName: 'John Smith',
+//     mass: 78,
+//     height: 1.6,
 
 
-    calcBMI: function() {
-        return this.mass / (this.height ** 2)
+//     calcBMI: function() {
+//         return this.mass / (this.height ** 2)
+//     }
+// }
+
+// const mark = {
+//     fullName: "Mark Miller's",
+//     mass: 92,
+//     height: 1.95,
+
+
+//     calcBMI: function() {
+//         return this.mass / (this.height ** 2)
+//     }
+// }
+
+// john_bmi = john.calcBMI()
+// mark_bmi = mark.calcBMI()
+
+// console.log(`${john.fullName}'s BMI (${john_bmi}) is ${john_bmi > mark_bmi ? "greater" : "less"} than ${mark.fullName}'s BMI (${mark_bmi}) `)
+
+// Loops
+
+// const johnArray = [
+//     'John',
+//     'Smith',
+//     34,
+//     1991,
+//     'Teacher',
+//     ['Joseph', 'Mary', 'David'],
+//     true,
+// ]
+
+// types = []
+
+// for(let i = 0; i < johnArray.length; i++) {
+//     console.log(johnArray[i], typeof johnArray[i])
+
+//     types.push(johnArray[i])
+//     // types[i] = typeof johnArray[i]
+// }
+
+// console.log(types)
+
+// const years = [1992, 2013, 1870, 2000, 2023]
+
+// const ages = []
+
+// for(let i = 0; i < years.length; i++) {
+//     ages.push(2037 - years[i])
+// }
+
+// console.log(ages, "\n")
+
+// // Continue and break
+
+// console.log("------- ONLY STRINGS ------")
+// for(let i = 0; i < johnArray.length; i++) {
+//     if(typeof johnArray[i] !== 'string') continue
+
+//     console.log(johnArray[i], typeof johnArray[i], i)
+// }
+
+// console.log("------- BREAK WITH NUMBERS ------")
+// for(let i = 0; i < johnArray.length; i++) {
+//     if(typeof johnArray[i] === 'number') break
+
+//     console.log(johnArray[i], typeof johnArray[i], i)
+// }
+
+
+const johnArray = [
+    'John',
+    'Smith',
+    34,
+    1991,
+    'Teacher',
+    ['Joseph', 'Mary', 'David'],
+    true,
+]
+
+for(let i = johnArray.length - 1; i >= 0 ; i--) {
+    console.log(i + ':', johnArray[i])
+}
+
+for(let exercise = 1; exercise <= 4; exercise++) {
+    console.log(`-------------- Starting exercise ${exercise}`);
+
+    for( let rep = 1; rep < 6; rep++) {
+        console.log(`-------------- Lifting weight repetition ${rep} 🏋️‍♀️`);
     }
 }
 
-const mark = {
-    fullName: "Mark Miller's",
-    mass: 92,
-    height: 1.95,
 
+///-----------
 
-    calcBMI: function() {
-        return this.mass / (this.height ** 2)
-    }
+let dice = Math.trunc(Math.random() * 6) + 1
+
+console.log('dice: ', dice)
+
+while (dice !== 6) {
+    console.log('dice: ', dice)
+    dice = Math.trunc(Math.random() * 6) + 1
 }
-
-john_bmi = john.calcBMI()
-mark_bmi = mark.calcBMI()
-
-console.log(`${john.fullName}'s BMI (${john_bmi}) is ${john_bmi > mark_bmi ? "greater" : "less"} than ${mark.fullName}'s BMI (${mark_bmi}) `)
-
