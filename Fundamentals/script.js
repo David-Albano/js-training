@@ -142,16 +142,16 @@
 
 
 
-// const john = {
-//     fullName: 'John Smith',
-//     mass: 78,
-//     height: 1.6,
+const john = {
+    fullName: 'John Smith',
+    mass: 78,
+    height: 1.6,
 
 
-//     calcBMI: function() {
-//         return this.mass / (this.height ** 2)
-//     }
-// }
+    calcBMI: function() {
+        return this.mass / (this.height ** 2)
+    }
+}
 
 // const mark = {
 //     fullName: "Mark Miller's",
@@ -252,3 +252,24 @@ while (dice !== 6) {
     console.log('dice: ', dice)
     dice = Math.trunc(Math.random() * 6) + 1
 }
+
+console.table(johnArray)
+console.table(john)
+
+
+// Little challenge
+
+const tempArray = [12, 21, 23]
+const tempArray2 = [12, 5, -5, 0, 4]
+
+const printForecast = (array) => {
+    let tempMsg = ''
+    for (let temp = 0; temp < array.length; temp++){
+        tempMsg += `... ${array[temp]}º in ${temp + 1} days `
+    }
+
+    return tempMsg
+}
+
+console.log(printForecast(tempArray))
+console.log(printForecast(tempArray2))
