@@ -37,6 +37,11 @@ const restaurant = {
 
     orderPasta: function(ing1, ing2, ing3) {
         console.log(`Here is you delicious pasta with ${ing1}, ${ing2} and ${ing3}`)
+    },
+
+    orderPizza: function(mainIngredients, ...otherIngredients) {
+        console.log(mainIngredients)
+        console.log(otherIngredients)
     }
 };
 
@@ -52,54 +57,98 @@ restaurant.orderDelivery({
     starterIndex: 1,
 });
 
-const arr = [7, 8, 9];
-const badNewArray = [1, 2, arr[0], arr[1], arr[2]]
-console.log(badNewArray)
+// 1) Destructuring
 
-// -------------- Spread Operator -------------- 
-const newArr = [1, 2, ...arr]
-console.log(newArr)
-console.log(...newArr) // ----> console.log(1, 2, 7, 8, 9)
+// -------------- Rest Pattern -------------- To pack elements into an array
+// SPREAD, because on RIGHT side of equal sign (=)
+const arr = [1, 2,  ...[3, 4]]
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci', 'Stracciatella']
-console.log(newMenu)
+// REST, because on LEFT side of equal sign (=)
 
-// Copy array
-const mainMenuCopy = [...restaurant.mainMenu]
-console.log(mainMenuCopy)
+const [a, b, c, ...others] = [ 1, 2, 3, 4, 5] // Takes the remainning elements of of the array and pu it into a new array (others in this case)
+console.log(a, b, c, others)
 
-// Join 2 arrays
-// const wholeMenu = [...restaurant.starterMenu, ...restaurant.mainMenu]
-const wholeMenu = [...restaurant.starterMenu, ...newMenu]
-console.log(wholeMenu)
+// REST skip the not assigned element ('Pasta' in this case)
+const [pizza1, , risotto1, ...otherFood1] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(pizza1, risotto1, otherFood1)
 
-// Iterables are: arrays, string, maps, sets, BUT NOT OBJECTS
-const str = 'David'
-const letter = [...str, '', 'S']
-console.log(letter)
-console.log(...str) // ----> console.log('D', 'a', 'v', 'i', 'd')
-// console.log(`${...str} Afonso`) ------>>> Error using the spread operator in this way
-
-const ingredients = [
-    // prompt('Let\'s make pasta! Ingredient 1:'),
-    // prompt('Ingredient 2:'),
-    // prompt('Ingredient 3:')
-]
-console.log(ingredients)
-
-// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2])  // Bad practice way
-restaurant.orderPasta(...ingredients)
+// REST skip the not assigned element (anyone in this case because Rissotto is the last one in this array)
+const [, , , , pizza, , risotto, ...otherFood] = [...restaurant.starterMenu, ...restaurant.mainMenu]
+console.log(pizza, risotto, otherFood)
 
 // Objects
-const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'}
-console.log(newRestaurant)
+const {sat, ...weekdays} = restaurant.openingHours
+console.log(sat, weekdays) 
 
-const restaurantCopy = {...restaurant}
-console.log(restaurantCopy)
+// 2) Functions
 
-restaurantCopy.name = 'Ristorante Roma'
-console.log(restaurantCopy.name)
-console.log(restaurant.name)
+const add = function(...numbers) { // packing elements unpacked into an array
+    console.log(numbers)
+    let sum = 0
+    for(let i = 0; i<numbers.length; i++) sum += numbers[i]
+    console.log(sum)
+}
+
+add(2, 3)
+add(5, 3, 7, 2)
+add(8, 2, 7, 6, 9, 10)
+
+const x = [23, 5, 7]
+add(...x) // unpacking array
+add(...x, 6, 7, 0, 9) // unpacking array more individuals values
+
+restaurant.orderPizza('mushrooms', 'onion', 'olies', 'spinaches')
+restaurant.orderPizza('mushrooms')
+
+
+// -------------- Spread Operator -------------- To unpack an array
+// const arr = [7, 8, 9];
+// const badNewArray = [1, 2, arr[0], arr[1], arr[2]]
+// console.log(badNewArray)
+
+// const newArr = [1, 2, ...arr]
+// console.log(newArr)
+// console.log(...newArr) // ----> console.log(1, 2, 7, 8, 9)
+
+// const newMenu = [...restaurant.mainMenu, 'Gnocci', 'Stracciatella']
+// console.log(newMenu)
+
+// // Copy array
+// const mainMenuCopy = [...restaurant.mainMenu]
+// console.log(mainMenuCopy)
+
+// // Join 2 arrays
+// // const wholeMenu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+// const wholeMenu = [...restaurant.starterMenu, ...newMenu]
+// console.log(wholeMenu)
+
+// // Iterables are: arrays, string, maps, sets, BUT NOT OBJECTS
+// const str = 'David'
+// const letter = [...str, '', 'S']
+// console.log(letter)
+// console.log(...str) // ----> console.log('D', 'a', 'v', 'i', 'd')
+// // console.log(`${...str} Afonso`) ------>>> Error using the spread operator in this way
+
+// const ingredients = [
+//     // prompt('Let\'s make pasta! Ingredient 1:'),
+//     // prompt('Ingredient 2:'),
+//     // prompt('Ingredient 3:')
+// ]
+// console.log(ingredients)
+
+// // restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2])  // Bad practice way
+// restaurant.orderPasta(...ingredients)
+
+// // Objects
+// const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'}
+// console.log(newRestaurant)
+
+// const restaurantCopy = {...restaurant}
+// console.log(restaurantCopy)
+
+// restaurantCopy.name = 'Ristorante Roma'
+// console.log(restaurantCopy.name)
+// console.log(restaurant.name)
 
 
 // ----------------  Destructuring Objects ----------------
