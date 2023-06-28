@@ -11,78 +11,174 @@ const restaurant = {
     categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    
+    openingHours: {
+        thu: {
+        open: 12,
+        close: 22,
+        },
+        fri: {
+        open: 11,
+        close: 23,
+        },
+        sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+        },
+    },
 
-    order: function(starterImdex, mainIndex) {
-        return [this.starterMenu[starterImdex], this.mainMenu[mainIndex]]
+    order: function(starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+    },
+
+    orderDelivery: function ({starterIndex = 1, mainIndex = 0, time = '20:00', address = "Another address"}) {
+        console.log(`Ordered received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}h`);
+    },
+
+    orderPasta: function(ing1, ing2, ing3) {
+        console.log(`Here is you delicious pasta with ${ing1}, ${ing2} and ${ing3}`)
     }
-
-    // openingHours: {
-    //     thu: {
-    //     open: 12,
-    //     close: 22,
-    //     },
-    //     fri: {
-    //     open: 11,
-    //     close: 23,
-    //     },
-    //     sat: {
-    //     open: 0, // Open 24 hours
-    //     close: 24,
-    //     },
-    // },
 };
 
-const arr = [2, 3, 4]
-const a = arr[0]
-const b = arr[1]
-const c = arr[2]
+restaurant.orderDelivery({
+    time: '22:30',
+    address: 'Via del sole, 21',
+    mainIndex: 2,
+    starterIndex: 2,
+});
 
-const [x, y, z] = arr
-console.log([x, y, z])
-console.log(x, y, z)
+restaurant.orderDelivery({
+    address: 'Via del sole, 21',
+    starterIndex: 1,
+});
 
-const[first, second] = restaurant.categories
-console.log(first, second)
+const arr = [7, 8, 9];
+const badNewArray = [1, 2, arr[0], arr[1], arr[2]]
+console.log(badNewArray)
 
-const [first_1, , third] = restaurant.categories
-console.log(first_1, third)
+// -------------- Spread Operator -------------- 
+const newArr = [1, 2, ...arr]
+console.log(newArr)
+console.log(...newArr) // ----> console.log(1, 2, 7, 8, 9)
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+const newMenu = [...restaurant.mainMenu, 'Gnocci', 'Stracciatella']
+console.log(newMenu)
 
-// Switching variables
-// const temp = main
-// main = secondary
-// secondary = temp
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu]
+console.log(mainMenuCopy)
 
-// Same as above but using destructuring
-[main, secondary] = [secondary, main];
+// Join 2 arrays
+// const wholeMenu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+const wholeMenu = [...restaurant.starterMenu, ...newMenu]
+console.log(wholeMenu)
 
-console.log(main, secondary);
+// Iterables are: arrays, string, maps, sets, BUT NOT OBJECTS
+const str = 'David'
+const letter = [...str, '', 'S']
+console.log(letter)
+console.log(...str) // ----> console.log('D', 'a', 'v', 'i', 'd')
+// console.log(`${...str} Afonso`) ------>>> Error using the spread operator in this way
 
-// console.log(restaurant.order(2, 0))
+const ingredients = [
+    // prompt('Let\'s make pasta! Ingredient 1:'),
+    // prompt('Ingredient 2:'),
+    // prompt('Ingredient 3:')
+]
+console.log(ingredients)
 
-// Receive 2 return values from a function
-// Destructuring
-const [starterFood, mainDish] = restaurant.order(2, 1)
-console.log(starterFood, mainDish)
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2])  // Bad practice way
+restaurant.orderPasta(...ingredients)
 
-const nested = [2, 4, [5, 6]]
-const [i, ,j] = nested
-console.log(i, j)
+// Objects
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'}
+console.log(newRestaurant)
 
-const [n1, , [n2, n3]] = nested
-console.log(n1, n2, n3)
+const restaurantCopy = {...restaurant}
+console.log(restaurantCopy)
 
-// Default values
-const [p, q, r] = [8, 9]
-console.log(p, q, r)
+restaurantCopy.name = 'Ristorante Roma'
+console.log(restaurantCopy.name)
+console.log(restaurant.name)
 
-const [p1 = 1, q1 = 1, r1 = 1] = [8, 9]
-console.log(p1, q1, r1) // ---> 8, 9, 1
 
-const [p2 = 1, q2 = 1, r2 = 1] = [8]
-console.log(p2, q2, r2)  // ---> 8, 1, 1
+// ----------------  Destructuring Objects ----------------
+// const {name, openingHours, categories} = restaurant;
+// console.log(name, openingHours, categories);
 
-const [p3 = 1, q3 = 1, r3 = 1] = []
-console.log(p3, q3, r3)  // ---> 1, 1, 1
+// const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+// console.log(restaurantName, hours, tags);
+
+// // Setting default values for properties in case they don't exist
+// const { menu = [], starterMenu: starters = []} = restaurant
+// console.log( menu, starters)
+
+// // Mutating variables
+// let a = 111;
+// let b = 999;
+// const obj = {a: 23, b: 7, c: 14};
+
+// ({a, b} = obj);
+// console.log(a, b)
+
+// // Nested objects
+// const {fri: {open: o, close: c}} = openingHours
+// console.log('open: ', o)
+// console.log('close: ', c)
+
+
+// -----------------  Destructuring Arrays  -----------------
+// const arr = [2, 3, 4]
+// const a = arr[0]
+// const b = arr[1]
+// const c = arr[2]
+
+// const [x, y, z] = arr
+// console.log([x, y, z])
+// console.log(x, y, z)
+
+// const[first, second] = restaurant.categories
+// console.log(first, second)
+
+// const [first_1, , third] = restaurant.categories
+// console.log(first_1, third)
+
+// let [main, , secondary] = restaurant.categories;
+// console.log(main, secondary);
+
+// // Switching variables
+// // const temp = main
+// // main = secondary
+// // secondary = temp
+
+// // Same as above but using destructuring
+// [main, secondary] = [secondary, main];
+
+// console.log(main, secondary);
+
+// // console.log(restaurant.order(2, 0))
+
+// // Receive 2 return values from a function
+// // Destructuring
+// const [starterFood, mainDish] = restaurant.order(2, 1)
+// console.log(starterFood, mainDish)
+
+// const nested = [2, 4, [5, 6]]
+// const [i, ,j] = nested
+// console.log(i, j)
+
+// const [n1, , [n2, n3]] = nested
+// console.log(n1, n2, n3)
+
+// // Default values
+// const [p, q, r] = [8, 9]
+// console.log(p, q, r)
+
+// const [p1 = 1, q1 = 1, r1 = 1] = [8, 9]
+// console.log(p1, q1, r1) // ---> 8, 9, 1
+
+// const [p2 = 1, q2 = 1, r2 = 1] = [8]
+// console.log(p2, q2, r2)  // ---> 8, 1, 1
+
+// const [p3 = 1, q3 = 1, r3 = 1] = []
+// console.log(p3, q3, r3)  // ---> 1, 1, 1
