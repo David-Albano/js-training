@@ -45,60 +45,108 @@ const restaurant = {
     }
 };
 
-restaurant.orderDelivery({
-    time: '22:30',
-    address: 'Via del sole, 21',
-    mainIndex: 2,
-    starterIndex: 2,
-});
+//  -------------  Short Circuit with && and || -----------
+// Logical Operators
+// They use ANY data typeof, return ANY data typeof, and short-circuiting
 
-restaurant.orderDelivery({
-    address: 'Via del sole, 21',
-    starterIndex: 1,
-});
+//'----- OR || OPERATOR ------'
+console.log('----- OR || OPERATOR ------')
+
+// With || If the first is true, it will return that same first value, and the second one will not be evaluated (short-circuiting)
+// otherwise i'll return the second one will be evaluated and returned
+console.log(3 || 'David') // -----> 3
+console.log('' || 'David') // -----> 'David'
+console.log(true || 0) // -----> true
+console.log(undefined || null) // -----> undefined
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null) // -----> 'Hello'
+
+const guest1 = restaurant.numGuests ? restaurant.numGuest : 10
+console.log(guest1)
+
+restaurant.newGuests = null
+const guest2 = restaurant.newGuests || 10
+console.log(guest2)
+
+restaurant.newGuests = 23
+const guest3 = restaurant.newGuests || 10
+console.log(guest3)
+
+// '----- AND && OPERATOR ------'
+// && operator is only true when all operands are true
+
+console.log('----- AND && OPERATOR ------')
+console.log(0 && 'David') // If first is falsy, will return the first one immediately regardless the second one is true or not
+console.log(7 && 'David') // If first is true, will return the second one one immediately regardless is true or not
+console.log(7 && false)  //                 ""      ""      ""        ""
+console.log(null && undefined)
+console.log(undefined && false)
+console.log('multiple ----')
+console.log('Hello' && 23 && null && 'David') // for multiple operands the short-circuiting will return the first falsy operand
+console.log('Good' && 7 && true && 100) // For multiple operands if all are true then return the last one evaluated
+
+// -----
+if (restaurant.orderPizza) {
+    restaurant.orderPizza('sauce', 'cheese', 'basil')
+}
+
+// If the method/key/attribute exists then call the method / (execute the second operand)
+restaurant.orderPizza && restaurant.orderPizza('sausage', 'cheese', 'bell pepper')
+
+// restaurant.orderDelivery({
+//     time: '22:30',
+//     address: 'Via del sole, 21',
+//     mainIndex: 2,
+//     starterIndex: 2,
+// });
+
+// restaurant.orderDelivery({
+//     address: 'Via del sole, 21',
+//     starterIndex: 1,
+// });
 
 // 1) Destructuring
 
 // -------------- Rest Pattern -------------- To pack elements into an array
 // SPREAD, because on RIGHT side of equal sign (=)
-const arr = [1, 2,  ...[3, 4]]
+// const arr = [1, 2,  ...[3, 4]]
 
-// REST, because on LEFT side of equal sign (=)
+// // REST, because on LEFT side of equal sign (=)
 
-const [a, b, c, ...others] = [ 1, 2, 3, 4, 5] // Takes the remainning elements of of the array and pu it into a new array (others in this case)
-console.log(a, b, c, others)
+// const [a, b, c, ...others] = [ 1, 2, 3, 4, 5] // Takes the remainning elements of of the array and pu it into a new array (others in this case)
+// console.log(a, b, c, others)
 
-// REST skip the not assigned element ('Pasta' in this case)
-const [pizza1, , risotto1, ...otherFood1] = [...restaurant.mainMenu, ...restaurant.starterMenu]
-console.log(pizza1, risotto1, otherFood1)
+// // REST skip the not assigned element ('Pasta' in this case)
+// const [pizza1, , risotto1, ...otherFood1] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+// console.log(pizza1, risotto1, otherFood1)
 
-// REST skip the not assigned element (anyone in this case because Rissotto is the last one in this array)
-const [, , , , pizza, , risotto, ...otherFood] = [...restaurant.starterMenu, ...restaurant.mainMenu]
-console.log(pizza, risotto, otherFood)
+// // REST skip the not assigned element (anyone in this case because Rissotto is the last one in this array)
+// const [, , , , pizza, , risotto, ...otherFood] = [...restaurant.starterMenu, ...restaurant.mainMenu]
+// console.log(pizza, risotto, otherFood)
 
-// Objects
-const {sat, ...weekdays} = restaurant.openingHours
-console.log(sat, weekdays) 
+// // Objects
+// const {sat, ...weekdays} = restaurant.openingHours
+// console.log(sat, weekdays) 
 
-// 2) Functions
+// // 2) Functions
 
-const add = function(...numbers) { // packing elements unpacked into an array
-    console.log(numbers)
-    let sum = 0
-    for(let i = 0; i<numbers.length; i++) sum += numbers[i]
-    console.log(sum)
-}
+// const add = function(...numbers) { // packing elements unpacked into an array
+//     console.log(numbers)
+//     let sum = 0
+//     for(let i = 0; i<numbers.length; i++) sum += numbers[i]
+//     console.log(sum)
+// }
 
-add(2, 3)
-add(5, 3, 7, 2)
-add(8, 2, 7, 6, 9, 10)
+// add(2, 3)
+// add(5, 3, 7, 2)
+// add(8, 2, 7, 6, 9, 10)
 
-const x = [23, 5, 7]
-add(...x) // unpacking array
-add(...x, 6, 7, 0, 9) // unpacking array more individuals values
+// const x = [23, 5, 7]
+// add(...x) // unpacking array
+// add(...x, 6, 7, 0, 9) // unpacking array more individuals values
 
-restaurant.orderPizza('mushrooms', 'onion', 'olies', 'spinaches')
-restaurant.orderPizza('mushrooms')
+// restaurant.orderPizza('mushrooms', 'onion', 'olies', 'spinaches')
+// restaurant.orderPizza('mushrooms')
 
 
 // -------------- Spread Operator -------------- To unpack an array
