@@ -45,53 +45,64 @@ const restaurant = {
     }
 };
 
+// --------  The Nullish Coalescing Operator (??) --------------
+// Works with the concept of nullish values instead of falsy values
+// Nullish: null and undefined (NOT 0 or '')
+restaurant.numGuests = 0
+const guest = restaurant.numGuests || 10
+console.log(guest) // With || will be 10
+
+const guestCorrect = restaurant.numGuests ?? 10
+console.log(guestCorrect)  // With || will be 0
+
+
 //  -------------  Short Circuit with && and || -----------
 // Logical Operators
 // They use ANY data typeof, return ANY data typeof, and short-circuiting
 
 //'----- OR || OPERATOR ------'
-console.log('----- OR || OPERATOR ------')
+// console.log('----- OR || OPERATOR ------')
 
-// With || If the first is true, it will return that same first value, and the second one will not be evaluated (short-circuiting)
-// otherwise i'll return the second one will be evaluated and returned
-console.log(3 || 'David') // -----> 3
-console.log('' || 'David') // -----> 'David'
-console.log(true || 0) // -----> true
-console.log(undefined || null) // -----> undefined
+// // With || If the first is true, it will return that same first value, and the second one will not be evaluated (short-circuiting)
+// // otherwise i'll return the second one will be evaluated and returned
+// console.log(3 || 'David') // -----> 3
+// console.log('' || 'David') // -----> 'David'
+// console.log(true || 0) // -----> true
+// console.log(undefined || null) // -----> undefined
 
-console.log(undefined || 0 || '' || 'Hello' || 23 || null) // -----> 'Hello'
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null) // -----> 'Hello'
 
-const guest1 = restaurant.numGuests ? restaurant.numGuest : 10
-console.log(guest1)
+// const guest1 = restaurant.numGuests ? restaurant.numGuest : 10
+// console.log(guest1)
 
-restaurant.newGuests = null
-const guest2 = restaurant.newGuests || 10
-console.log(guest2)
+// restaurant.numGuests = null
+// const guest2 = restaurant.numGuests || 10
+// console.log(guest2)
 
-restaurant.newGuests = 23
-const guest3 = restaurant.newGuests || 10
-console.log(guest3)
+// restaurant.numGuests = 23
+// const guest3 = restaurant.numGuests || 10
+// console.log(guest3)
 
-// '----- AND && OPERATOR ------'
-// && operator is only true when all operands are true
+// // '----- AND && OPERATOR ------'
+// // && operator is only true when all operands are true
 
-console.log('----- AND && OPERATOR ------')
-console.log(0 && 'David') // If first is falsy, will return the first one immediately regardless the second one is true or not
-console.log(7 && 'David') // If first is true, will return the second one one immediately regardless is true or not
-console.log(7 && false)  //                 ""      ""      ""        ""
-console.log(null && undefined)
-console.log(undefined && false)
-console.log('multiple ----')
-console.log('Hello' && 23 && null && 'David') // for multiple operands the short-circuiting will return the first falsy operand
-console.log('Good' && 7 && true && 100) // For multiple operands if all are true then return the last one evaluated
+// console.log('----- AND && OPERATOR ------')
+// console.log(0 && 'David') // If first is falsy, will return the first one immediately regardless the second one is true or not
+// console.log(7 && 'David') // If first is true, will return the second one one immediately regardless is true or not
+// console.log(7 && false)  //                 ""      ""      ""        ""
+// console.log(null && undefined)
+// console.log(undefined && false)
+// console.log('multiple ----')
+// console.log('Hello' && 23 && null && 'David') // for multiple operands the short-circuiting will return the first falsy operand
+// console.log('Good' && 7 && true && 100) // For multiple operands if all are true then return the last one evaluated
 
-// -----
-if (restaurant.orderPizza) {
-    restaurant.orderPizza('sauce', 'cheese', 'basil')
-}
+// // -----
+// if (restaurant.orderPizza) {
+//     restaurant.orderPizza('sauce', 'cheese', 'basil')
+// }
 
 // If the method/key/attribute exists then call the method / (execute the second operand)
-restaurant.orderPizza && restaurant.orderPizza('sausage', 'cheese', 'bell pepper')
+// restaurant.orderPizza && restaurant.orderPizza('sausage', 'cheese', 'bell pepper')
 
 // restaurant.orderDelivery({
 //     time: '22:30',
