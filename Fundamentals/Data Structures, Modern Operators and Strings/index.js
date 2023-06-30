@@ -45,15 +45,60 @@ const restaurant = {
     }
 };
 
+// ~~~~~~~~~~~ LOGICAL ASSIGNMENT OPERATORS ~~~~~~~~~~~
+
+const rest1 = {
+    name: 'Capri',
+    numGuests: 20
+}
+
+const rest2 = {
+    name: 'La Piazza',
+    owner: 'Giovanni Rossi'
+};
+
+const rest3 = {
+    name: 'L\'Áncora',
+    numGuests: 0
+}
+
+// OR ASSIGNMENT OPERATOR
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+                            //   Something like a += b ----> a = a + b
+rest1.numGuests ||= 10      // ----> rest1.numGuests = rest1.numGuests || 10
+rest2.numGuests ||= 10      // ----> rest2.numGuests = rest2.numGuests || 10
+console.log(rest1)
+console.log(rest2)
+
+// NULLISH ASSIGNMENT OPERATOR
+rest3.numGuests ??= 10      // ----> rest3.numGuests = rest3.numGuests ?? 10
+console.log(rest3)
+
+// AND ASSIGNMENT OPERATOR -- Assign a value to a variable if this one is truthy
+// rest1.owner = rest1.owner && '<ANONYMOUS>' // undefined cause' owner is falsy
+// rest2.owner = rest2.owner && '<ANONYMOUS>' // (ANONYMOUS IF OWNER IS TRUE)
+
+rest1.owner &&= '<ANONYMOUS>' // In this way is NOT declared undefined
+rest2.owner &&= '<ANONYMOUS>'
+console.log(rest1)
+console.log(rest2)
+
+rest3.owner = rest3.owner && '<ANONYMOUS>' // In this way is declared undefined
+console.log(rest3)
+
+
+///////////////////////////////////////////////
 // --------  The Nullish Coalescing Operator (??) --------------
 // Works with the concept of nullish values instead of falsy values
 // Nullish: null and undefined (NOT 0 or '')
-restaurant.numGuests = 0
-const guest = restaurant.numGuests || 10
-console.log(guest) // With || will be 10
+// restaurant.numGuests = 0
+// const guest = restaurant.numGuests || 10
+// console.log(guest) // With || will be 10
 
-const guestCorrect = restaurant.numGuests ?? 10
-console.log(guestCorrect)  // With || will be 0
+// const guestCorrect = restaurant.numGuests ?? 10
+// console.log(guestCorrect)  // With || will be 0
 
 
 //  -------------  Short Circuit with && and || -----------
