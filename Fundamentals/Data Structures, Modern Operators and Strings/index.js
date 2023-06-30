@@ -45,6 +45,18 @@ const restaurant = {
     }
 };
 
+// ~~~~~~~~~~ For-of-Loop ~~~~~~~~~~
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+for (const item of menu) console.log(item)
+
+for (const [number, name] of menu.entries()) {
+    console.log(`${number + 1}: ${name}`)
+}
+// console.log([...menu.entries()])
+
+
 // ~~~~~~~~~~~ LOGICAL ASSIGNMENT OPERATORS ~~~~~~~~~~~
 
 // const rest1 = {

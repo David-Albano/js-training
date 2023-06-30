@@ -89,8 +89,8 @@ const printGoals = function(...playerNames) {
 
 // printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich')
 // console.log('~~~~~~~~~~~~~~~')
-printGoals(...game.scored)
+// printGoals(...game.scored)
 
 // 7th Task
-team1 < team2 && console.log('Team 1 is more likely to win!')
-team1 > team2 && console.log('Team 2 is more likely to win!')
+// team1 < team2 && console.log('Team 1 is more likely to win!')
+// team1 > team2 && console.log('Team 2 is more likely to win!')
