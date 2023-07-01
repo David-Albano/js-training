@@ -48,81 +48,81 @@ const restaurant = {
 };
 
 // ~~~~~~~~~~~~ MAPS ~~~~~~~~~~~~
-const rest = new Map()
-rest.set('name', 'Classico Italiano')
-rest.set(1, 'Firenze, Italy')
-rest.set(2, 'Lisbon, Portugal')
-console.log(rest)
-
-rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-    .set('open', 11)
-    .set('close', 23)
-    .set(true, 'We are open :D')
-    .set(false, 'We are closed :(')
-
-console.log(rest)
-
-console.log(rest.get('name'))
-console.log(rest.get(true))
-console.log(rest.get('categories'))
-console.log(rest.get(2))
-
-const time = 21
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
-
-console.log(rest.has('categories'))
-rest.delete(1)
-console.log(rest)
-// rest.clear()
+// const rest = new Map()
+// rest.set('name', 'Classico Italiano')
+// rest.set(1, 'Firenze, Italy')
+// rest.set(2, 'Lisbon, Portugal')
 // console.log(rest)
 
-const arr = [1, 2]
-rest.set(arr, 'Test')
-console.log(rest.get(arr))
+// rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//     .set('open', 11)
+//     .set('close', 23)
+//     .set(true, 'We are open :D')
+//     .set(false, 'We are closed :(')
 
-rest.set(document.querySelector('h1'), 'Heading')
+// console.log(rest)
 
-console.log(rest)
-console.log(rest.size)
+// console.log(rest.get('name'))
+// console.log(rest.get(true))
+// console.log(rest.get('categories'))
+// console.log(rest.get(2))
 
-const question = new Map([
-    ['question', 'What\'s the best programming language in the world?'],
-    [1, 'C'],
-    [2, 'Java'],
-    [3, 'JavaScript'],
-    ['correct', 3],
-    [true, 'Correct 🎉'],
-    [false, 'Try again!'],
-])
-console.log(question)
+// const time = 21
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
 
-// Convert object to map
-console.log(Object.entries(openingHours))
+// console.log(rest.has('categories'))
+// rest.delete(1)
+// console.log(rest)
+// // rest.clear()
+// // console.log(rest)
 
-const hourMap = new Map(Object.entries(openingHours))
-console.log(hourMap)
+// const arr = [1, 2]
+// rest.set(arr, 'Test')
+// console.log(rest.get(arr))
 
-// Quiz app
-console.log(question.get('question'))
-for(const [key, value] of question) {
-    if(typeof key === 'number')
-        console.log(`Answer ${key}: ${value}`)
-}
+// rest.set(document.querySelector('h1'), 'Heading')
 
-// const answer = Number(prompt('Your answer:'))
-const answer = 3
-console.log(answer)
+// console.log(rest)
+// console.log(rest.size)
 
-// answer === question.get('correct') ? console.log(question.get(true)) : console.log(question.get(false))
-// Or reduced
-console.log(question.get(answer === question.get('correct')))
+// const question = new Map([
+//     ['question', 'What\'s the best programming language in the world?'],
+//     [1, 'C'],
+//     [2, 'Java'],
+//     [3, 'JavaScript'],
+//     ['correct', 3],
+//     [true, 'Correct 🎉'],
+//     [false, 'Try again!'],
+// ])
+// console.log(question)
 
-// Convert Map to Array
+// // Convert object to map
+// console.log(Object.entries(openingHours))
 
-console.log([...question])
-// console.log([...question.entries()]) // Same as above
-console.log([...question.keys()])
-console.log([...question.values()])
+// const hourMap = new Map(Object.entries(openingHours))
+// console.log(hourMap)
+
+// // Quiz app
+// console.log(question.get('question'))
+// for(const [key, value] of question) {
+//     if(typeof key === 'number')
+//         console.log(`Answer ${key}: ${value}`)
+// }
+
+// // const answer = Number(prompt('Your answer:'))
+// const answer = 3
+// console.log(answer)
+
+// // answer === question.get('correct') ? console.log(question.get(true)) : console.log(question.get(false))
+// // Or reduced
+// console.log(question.get(answer === question.get('correct')))
+
+// // Convert Map to Array
+
+// console.log([...question])
+// // console.log([...question.entries()]) // Same as above
+// console.log([...question.keys()])
+// console.log([...question.values()])
 
 
 // ~~~~~~~~~~~ SETS ~~~~~~~~~~~
