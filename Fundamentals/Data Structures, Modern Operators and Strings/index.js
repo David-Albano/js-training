@@ -47,45 +47,67 @@ const restaurant = {
     }
 };
 
-if(restaurant.openingHours && restaurant.openingHours.mon)
-console.log(restaurant.openingHours.mon.open)
+const properties = Object.keys(openingHours)
+console.log(properties)
 
-// ~~~~~~~~ WITH optional chaining~~~~~~~~
-console.log(restaurant.openingHours.mon?.open)
-console.log(restaurant.openingHours.anotherProperty?.open)
+let openStr = `We are open on ${properties.length} days: `
 
-// If element before the '?' mark exists or is not false, then try to read the property afterwards the '?'
-console.log(restaurant?.openingHours)
-console.log(restaurant.openingHours?.fri)
-console.log(restaurant.openingHours.fri?.open)
-console.log(restaurant.openingHours?.sat?.open)
+// ~~~~~~~~Looping Objects~~~~~~~~~
+for(const day of Object.keys(openingHours)) {
+    openStr += `${day}, `
+}
+console.log(openStr)
 
+// Properties values
+const values = Object.values(openingHours)
+console.log(values)
 
-// Example
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+// Entire object
+const entries = Object.entries(openingHours)
+console.log(entries)
 
-for (const day of days) {
-    const open = restaurant.openingHours[day]?.open ?? 'closed'
-    console.log(`On ${day} restaurant opens at ${open}`)
+for(const [key, {open, close}] of entries) {
+    console.log(`On ${key} we open at the ${open} and close at ${close}`)
 }
 
-// Methods
-console.log(restaurant.order?.(3, 0) ?? 'Method doesn\'t exists')
-console.log(restaurant.orderPasta?.('Cheese', 'Sauce', 'Basil') ?? 'Method doesn\'t exists')
-console.log(restaurant.orderRissotto?.(0, 1) ?? 'Method doesn\'t exists')
-
-// Arrays
-const users = [
-    {name: 'David', email: 'david@mail.com'}
-]
-console.log(users[0]?.name ?? 'User array empty')
-
-const users2 = []
-console.log(users2[0]?.name ?? 'User array empty')
-console.log(users2[9]?.name ?? 'User array empty') // Out of index case also
 
 
+// if(restaurant.openingHours && restaurant.openingHours.mon)
+// console.log(restaurant.openingHours.mon.open)
 
+// // ~~~~~~~~ WITH optional chaining~~~~~~~~
+// console.log(restaurant.openingHours.mon?.open)
+// console.log(restaurant.openingHours.anotherProperty?.open) 
+
+// // If element before the '?' mark exists or is not false, then try to read the property afterwards the '?'
+// console.log(restaurant?.openingHours)
+// console.log(restaurant.openingHours?.fri)
+// console.log(restaurant.openingHours.fri?.open)
+// console.log(restaurant.openingHours?.sat?.open)
+
+
+// // Example
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+// for (const day of days) {
+//     const open = restaurant.openingHours[day]?.open ?? 'closed'
+//     console.log(`On ${day} restaurant opens at ${open}`)
+// }
+
+// // Methods
+// console.log(restaurant.order?.(3, 0) ?? 'Method doesn\'t exists')
+// console.log(restaurant.orderPasta?.('Cheese', 'Sauce', 'Basil') ?? 'Method doesn\'t exists')
+// console.log(restaurant.orderRissotto?.(0, 1) ?? 'Method doesn\'t exists')
+
+// // Arrays
+// const users = [
+//     {name: 'David', email: 'david@mail.com'}
+// ]
+// console.log(users[0]?.name ?? 'User array empty')
+
+// const users2 = []
+// console.log(users2[0]?.name ?? 'User array empty')
+// console.log(users2[9]?.name ?? 'User array empty') // Out of index case also
 
 
 // ~~~~~~~~~~ For-of-Loop ~~~~~~~~~~
