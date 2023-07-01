@@ -16,76 +16,76 @@ Suppose we get data from a web service about a certain game (below). In this cha
 TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
 */
 
-const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-        [
-        'Neuer',
-        'Pavard',
-        'Martinez',
-        'Alaba',
-        'Davies',
-        'Kimmich',
-        'Goretzka',
-        'Coman',
-        'Muller',
-        'Gnarby',
-        'Lewandowski',
-        ],
-        [
-        'Burki',
-        'Schulz',
-        'Hummels',
-        'Akanji',
-        'Hakimi',
-        'Weigl',
-        'Witsel',
-        'Hazard',
-        'Brandt',
-        'Sancho',
-        'Gotze',
-        ],
-    ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-        team1: 1.33,
-        x: 3.25,
-        team2: 6.5,
-    },
-};
+// const game = {
+//     team1: 'Bayern Munich',
+//     team2: 'Borrussia Dortmund',
+//     players: [
+//         [
+//         'Neuer',
+//         'Pavard',
+//         'Martinez',
+//         'Alaba',
+//         'Davies',
+//         'Kimmich',
+//         'Goretzka',
+//         'Coman',
+//         'Muller',
+//         'Gnarby',
+//         'Lewandowski',
+//         ],
+//         [
+//         'Burki',
+//         'Schulz',
+//         'Hummels',
+//         'Akanji',
+//         'Hakimi',
+//         'Weigl',
+//         'Witsel',
+//         'Hazard',
+//         'Brandt',
+//         'Sancho',
+//         'Gotze',
+//         ],
+//     ],
+//     score: '4:0',
+//     scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//     date: 'Nov 9th, 2037',
+//     odds: {
+//         team1: 1.33,
+//         x: 3.25,
+//         team2: 6.5,
+//     },
+// };
 
 // 1rst Task
-const [players1, players2] = game.players
-// console.log(players1)
-// console.log(players2)
+// const [players1, players2] = game.players
+// // console.log(players1)
+// // console.log(players2)
 
-// 2nd Task
-const [gk, ...fieldPlayers] = players1
-// console.log(gk, fieldPlayers)
+// // 2nd Task
+// const [gk, ...fieldPlayers] = players1
+// // console.log(gk, fieldPlayers)
 
-// 3rd Task
-const allPlayers = [...players1, ...players2]
-// console.log(allPlayers)
+// // 3rd Task
+// const allPlayers = [...players1, ...players2]
+// // console.log(allPlayers)
 
-// 4th Task
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic']
-// console.log(players1Final)
+// // 4th Task
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic']
+// // console.log(players1Final)
 
-// 5th Task
-const {odds: {team1, x: draw, team2}} = game
-// const {team1, x: draw, team2} = {...game.odds} // Another way
-// console.log(team1, draw, team2)
+// // 5th Task
+// const {odds: {team1, x: draw, team2}} = game
+// // const {team1, x: draw, team2} = {...game.odds} // Another way
+// // console.log(team1, draw, team2)
 
-// 6th Task
-const printGoals = function(...playerNames) {
-    for(let player = 0; player < playerNames.length; player++) {
-        console.log(playerNames[player])
-    }
-    console.log(`Total goals scored: ${playerNames.length}`)
-}
+// // 6th Task
+// const printGoals = function(...playerNames) {
+//     for(let player = 0; player < playerNames.length; player++) {
+//         console.log(playerNames[player])
+//     }
+//     console.log(`Total goals scored: ${playerNames.length}`)
+// }
 
 // printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich')
 // console.log('~~~~~~~~~~~~~~~')
