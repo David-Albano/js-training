@@ -47,6 +47,39 @@ const restaurant = {
     }
 };
 
+// ~~~~~~~~~~~ SETS ~~~~~~~~~~~
+// Collection of unique values (not duplicated)
+// In normal codebase the main usage of SETS is to remove of duplicated values of arrays
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza'])
+console.log(ordersSet)
+
+console.log(new Set('david afonso'))
+
+console.log(ordersSet.size)
+console.log(ordersSet.has('Pizza'))
+console.log(ordersSet.has('Bread'))
+ordersSet.add('Garlic Bread')
+ordersSet.add('Garlic Bread')
+ordersSet.delete('Risotto')
+// ordersSet.clear() // Delete all elements inside a set
+console.log(ordersSet)
+
+for(const i of ordersSet) console.log(i)
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
+
+// Creating Set from arrays, then destructure the set with spread operator and create the new array from that
+const staffUnique = [...new Set(staff)]
+console.log(staffUnique)
+
+console.log(new Set(staff).size)
+
+// Counting how many DIFFERENT letter there are in a string
+console.log(new Set('davidalbanoafonsomendez').size)
+
+
 // const properties = Object.keys(openingHours)
 // console.log(properties)
 
