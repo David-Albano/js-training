@@ -82,7 +82,7 @@ THIS TEST DATA (pasted to textarea)
 underscore_case
  first_name
 Some_Variable 
-  calculate_AGE
+   calculate_AGE
 delayed_departure
 
 SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
