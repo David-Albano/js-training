@@ -1,9 +1,6 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-'_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
 const openingHours= {
     thu: {
     open: 12,
@@ -46,6 +43,32 @@ const restaurant = {
         console.log(otherIngredients)
     }
 };
+
+///////////////////////////////////////
+// String Methods Practice
+
+const flights = '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+const getCode = function(code) {
+    const list = code.split('+')
+    for (const flight of list) {
+        let flightInfo = flight.split(';')
+        let message =  flightInfo[0].toLowerCase().includes('delayed') ? '🔴 ' : ''
+        message += flightInfo[0].replaceAll('_', ' ').trim() + ` from ${flightInfo[1].slice(0, 3).toUpperCase()}` + ` from ${flightInfo[2].slice(0, 3).toUpperCase()}` + ` (${flightInfo[3].replace(':', 'h')})`
+        console.log(message)
+    }   
+}
+
+getCode(flights)
+
+
+
+///////////////////////////////////////
 
 // const airline = 'TAP Air Portugal'
 // const plane = 'A320'
