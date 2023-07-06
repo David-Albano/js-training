@@ -90,23 +90,132 @@
 // ['John', 'Marta', 'Esteban', 'Laura'].forEach(high5)
 
 
-const greet = function(greeting) {
-    return function(name) {
-        console.log(`${greeting}, ${name}`)
+// const greet = function(greeting) {
+//     return function(name) {
+//         console.log(`${greeting}, ${name}`)
+//     }
+// }
+
+// const greeterHey = greet('Hey')
+// greeterHey('David')
+// greeterHey('Olivia')
+
+// greet('Hello')('David')
+// console.log('~~~~~~~~~~~~~~~~~')
+
+// // Little challenge
+// const greet2 = greeting => name => console.log(`${greeting}, ${name}`)
+
+// const greeterMorning = greet2('Good Morning')
+// greeterMorning('David')
+// greeterMorning('Olivia')
+// greet2('Good Morning')('David')
+
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book(flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline} flight ${flightNum}`)
+        this.bookings.push({
+            flight: `${this.iataCode}${flightNum}, name: ${name}`
+        })
     }
 }
 
-const greeterHey = greet('Hey')
-greeterHey('David')
-greeterHey('Olivia')
+lufthansa.book(239, 'David Afonso')
+lufthansa.book(635, 'John McArthur')
+console.log(lufthansa)
 
-greet('Hello')('David')
-console.log('~~~~~~~~~~~~~~~~~')
+const eurowings = {
+    airline:'Eurowings',
+    iataCode: '"EW',
+    bookings: [],
+}
 
-// Little challenge
-const greet2 = greeting => name => console.log(`${greeting}, ${name}`)
+const book = lufthansa.book
 
-const greeterMorning = greet2('Good Morning')
-greeterMorning('David')
-greeterMorning('Olivia')
-greet2('Good Morning')('David')
+// DOES NOT work
+// book(23, 'Vanessa Smith')
+
+// Class Method
+// First parameter must the objects we are point to
+book.call(eurowings, 23, 'Vanessa Smith')
+console.log(eurowings)
+
+book.call(lufthansa, 115, 'Abdel Cooper')
+console.log(lufthansa)
+
+const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX',
+    bookings: []
+}
+
+book.call(swiss, 583, 'David Afonso')
+console.log(swiss)
+
+// Apply method (BARELY USED IN MODERN JAVASCRIPT) ---> Similar to the call method but it takes an array of the arguments needed
+const flightData = [220, 'George Gibson']
+book.apply(swiss, flightData)
+console.log(swiss)
+
+book.call(eurowings, ...flightData) // ------> Same as ---> book.apply(swiss, flightData)
+console.log(eurowings)
+
+
+// Bind method
+// book.call(eurowings, 23, 'Vanessa Smith')
+
+const bookEW = book.bind(eurowings)
+const bookLH = book.bind(lufthansa)
+const bookLX = book.bind(swiss)
+
+bookEW(23, 'Steven Williams')
+bookLH(115, 'Teresa Matos')
+bookLX(115, 'Robert Wood')
+
+console.log(eurowings)
+console.log(lufthansa)
+console.log(swiss)
+
+const bookEW23 = book.bind(eurowings, 23)
+bookEW23('Stephen Roberts')
+
+const bookLH112 = book.bind(lufthansa, 112)
+bookLH112('Lucas Bosworth')
+
+
+// With Event Listener
+lufthansa.planes = 300
+lufthansa.buyPlane = function() {
+    console.log(this);
+    
+    this.planes++;
+    console.log(this.planes);
+}
+// lufthansa.buyPlane()
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application
+const addTax = (rate, value) => value + (value * rate)
+console.log(addTax(0.1, 200))
+
+// # Creating a branch new specific function from the most general function (addTAX)
+const addVAT = addTax.bind(null, 0.23) // ----->> addVAT = value => value + (value * 0.23)
+
+console.log(addVAT(100))
+console.log(addVAT(540))
+console.log(addVAT(3000))
+
+const addTaxRAte = function(rate){
+    return function(value){
+        return value + (value * rate)
+    }
+}
+
+
+const addVAT2 = addTaxRAte(0.23)
+console.log(addVAT2(540))
+console.log(addVAT2(3000))
