@@ -292,20 +292,87 @@
 // };
 // runOnce();
 
-// IIFE (Immediately Invoke Function Expression)
-(function() {
-    console.log('This will never run again')
-    const isPrivate = 23
-})();
+// IIFE (Immediately Invoked Function Expression)
+// (function() {
+//     console.log('This will never run again')
+//     const isPrivate = 23
+// })();
 
-// console.log(isPrivate)
+// // console.log(isPrivate)
 
-// IIFE
-(() => console.log('This will never run again'))()
+// // IIFE
+// (() => console.log('This will never run again'))()
 
-{
-    const isPrivate = 23;
-    var notPrivate = 46
+// {
+//     const isPrivate = 23;
+//     var notPrivate = 46
+// }
+// // console.log(isPrivate)
+// console.log(notPrivate)
+
+// CLOSURES
+
+const secureBooking = function() {
+    let passengerCount = 0;
+
+    return function() {
+        passengerCount++
+        console.log(`${passengerCount} passengers`)
+    }
 }
-// console.log(isPrivate)
-console.log(notPrivate)
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker)
+
+// Example 1
+let f;
+
+const g = function() {
+    const a = 23;
+    f = function() {
+        console.log(a * 2)
+    }
+}
+
+const h = function() {
+    const b = 77;
+    f = function() {
+        console.log(b * 2)
+    }
+}
+
+g()
+f()
+console.dir(f)
+// Re-assigning f function
+h()
+f()
+console.dir(f)
+
+
+// Example 2
+const boardPassenger = function(passengersNumber, seconds) {
+    const perGroup = passengersNumber / 3
+
+    setTimeout(function(){
+        console.log(`We are now boarding all ${passengersNumber} passengers`) // 2nd
+        console.log(`There are 3 groups, each with ${perGroup} passengers`) // 3rd
+    }, seconds * 1000)
+    
+    console.log(`Will start boarding in ${seconds} seconds`) // 1rst (Doesn't wait the 3 seconds)
+}
+
+// setTimeout(function(){
+//     console.log('TIMER')
+// }, 1000)
+
+const perGroup = 1000;
+
+boardPassenger(180, 3) // 2nd
+boardPassenger(220, 2) // 1rst
+
