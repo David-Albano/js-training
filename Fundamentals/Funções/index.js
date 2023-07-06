@@ -312,67 +312,81 @@
 
 // CLOSURES
 
-const secureBooking = function() {
-    let passengerCount = 0;
+// const secureBooking = function() {
+//     let passengerCount = 0;
 
-    return function() {
-        passengerCount++
-        console.log(`${passengerCount} passengers`)
-    }
-}
+//     return function() {
+//         passengerCount++
+//         console.log(`${passengerCount} passengers`)
+//     }
+// }
 
-const booker = secureBooking();
+// const booker = secureBooking();
 
-booker();
-booker();
-booker();
+// booker();
+// booker();
+// booker();
 
-console.dir(booker)
+// console.dir(booker)
 
-// Example 1
-let f;
+// // Example 1
+// let f;
 
-const g = function() {
-    const a = 23;
-    f = function() {
-        console.log(a * 2)
-    }
-}
+// const g = function() {
+//     const a = 23;
+//     f = function() {
+//         console.log(a * 2)
+//     }
+// }
 
-const h = function() {
-    const b = 77;
-    f = function() {
-        console.log(b * 2)
-    }
-}
+// const h = function() {
+//     const b = 77;
+//     f = function() {
+//         console.log(b * 2)
+//     }
+// }
 
-g()
-f()
-console.dir(f)
-// Re-assigning f function
-h()
-f()
-console.dir(f)
+// g()
+// f()
+// console.dir(f)
+// // Re-assigning f function
+// h()
+// f()
+// console.dir(f)
 
 
-// Example 2
-const boardPassenger = function(passengersNumber, seconds) {
-    const perGroup = passengersNumber / 3
+// // Example 2
+// const boardPassenger = function(passengersNumber, seconds) {
+//     const perGroup = passengersNumber / 3
 
-    setTimeout(function(){
-        console.log(`We are now boarding all ${passengersNumber} passengers`) // 2nd
-        console.log(`There are 3 groups, each with ${perGroup} passengers`) // 3rd
-    }, seconds * 1000)
+//     setTimeout(function(){
+//         console.log(`We are now boarding all ${passengersNumber} passengers`) // 2nd
+//         console.log(`There are 3 groups, each with ${perGroup} passengers`) // 3rd
+//     }, seconds * 1000)
     
-    console.log(`Will start boarding in ${seconds} seconds`) // 1rst (Doesn't wait the 3 seconds)
-}
+//     console.log(`Will start boarding in ${seconds} seconds`) // 1rst (Doesn't wait the 3 seconds)
+// }
 
-// setTimeout(function(){
-//     console.log('TIMER')
-// }, 1000)
+// // setTimeout(function(){
+// //     console.log('TIMER')
+// // }, 1000)
 
-const perGroup = 1000;
+// const perGroup = 1000;
 
-boardPassenger(180, 3) // 2nd
-boardPassenger(220, 2) // 1rst
+// boardPassenger(180, 3) // 2nd
+// boardPassenger(220, 2) // 1rst
 
+
+// Practice
+// Take the IIFE below and at the end of the function, attach an event listener that changes the 
+// color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+
+// And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. 
+// Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+
+(function() {
+    const header = document.querySelector('h1');
+    header.style.color = 'red'
+
+    document.querySelector('body').addEventListener('click', () => header.style.color = 'blue')
+})()
