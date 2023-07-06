@@ -249,35 +249,63 @@
 
 
 // 1rst Task
-const poll = {
-    question: 'What is your favorite programming language?',
-    options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-    answers: new Array(4).fill(0),
-    registerNewAnswer() {
-        const answer = Number(prompt(
-            `${this.question}\n${this.options.join('\n')}\n(Write option number)`
-        ))
+// const poll = {
+//     question: 'What is your favorite programming language?',
+//     options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//     answers: new Array(4).fill(0),
+//     registerNewAnswer() {
+//         const answer = Number(prompt(
+//             `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+//             ))
         
-        // If any of the conditions are true then the last one is executed (this.answers[answer]++)
-        typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++
+//             // If any of the conditions are true then the last one is executed (this.answers[answer]++)
+//             typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++
+            
+//             // 4th Task
+//             this.displayResults()
+//             this.displayResults('string')
+//         },
+        
+//         // 3rd Task
+//         displayResults(type = 'array') {
+//             if(type === 'array') {
+//                 console.log(this.answers)
+//             } else if(type === 'string') {
+//                 console.log(`Poll results are ${this.answers.join(', ')}`)
+//             }
+//         }
+//     }
 
-        this.displayResults()
-        this.displayResults('string')
-    },
+// // 2nd Task
+// document
+//     .querySelector('.poll')
+//     .addEventListener('click', poll.registerNewAnswer.bind(poll))
 
-    displayResults(type = 'array') {
-        if(type === 'array') {
-            console.log(this.answers)
-        } else if(type === 'string') {
-            console.log(`Poll results are ${this.answers.join(', ')}`)
-        }
-    }
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+
+// 
+
+// const runOnce = function() {
+//     console.log('This will never run again')
+// };
+// runOnce();
+
+// IIFE (Immediately Invoke Function Expression)
+(function() {
+    console.log('This will never run again')
+    const isPrivate = 23
+})();
+
+// console.log(isPrivate)
+
+// IIFE
+(() => console.log('This will never run again'))()
+
+{
+    const isPrivate = 23;
+    var notPrivate = 46
 }
-
-document
-    .querySelector('.poll')
-    .addEventListener('click', poll.registerNewAnswer.bind(poll))
-
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+// console.log(isPrivate)
+console.log(notPrivate)
