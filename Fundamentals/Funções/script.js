@@ -227,7 +227,7 @@ Here are your tasks:
 
 1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
   1.1. Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
-        What is your favourite programming language?
+        What is your favorite programming language?
         0: JavaScript
         1: Python
         2: Rust
@@ -251,7 +251,7 @@ GOOD LUCK 😀
 
 /*
 const poll = {
-  question: 'What is your favourite programming language?',
+  question: 'What is your favorite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
