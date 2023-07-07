@@ -69,11 +69,11 @@
 // // order for forEach loop --> current element, current index, entire array
 // // This is how the arguments are passed into the function
 // movements.forEach(function(movement, index, array) {
-//     if(movement > 0) {
-//         console.log(`Movement ${index +1} You deposited ${movement}`);
-//     } else {
-//         console.log(`Movement ${index +1} You withdrew ${Math.abs(movement)}`);
-//     }
+//  if(movement > 0) {
+//      console.log(`Movement ${index +1} You deposited ${movement}`);
+//  } else {
+//     console.log(`Movement ${index +1} You withdrew ${Math.abs(movement)}`);
+//  }
 // })
 
 // // forEach With Maps and Sets
@@ -119,20 +119,35 @@
 // TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 // TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
-const checkDog = function(arr1, arr2) {
-    let correctedArr = arr1.slice(1, -2)
-    const bothArr = [...correctedArr, ...arr2]
+// const checkDog = function(arr1, arr2) {
+//     let correctedArr = arr1.slice(1, -2)
+//     const bothArr = [...correctedArr, ...arr2]
 
-    bothArr.forEach((age, index)=>{
-        let typeDog = age > 3 ? `an adult and is ${age} years old` : 'a puppy 🐶'
-        console.log(`Dog number ${index + 1} is still ${typeDog}`)
-    })
+//     bothArr.forEach((age, index)=>{
+//         let typeDog = age > 3 ? `an adult and is ${age} years old` : 'a puppy 🐶'
+//         console.log(`Dog number ${index + 1} is still ${typeDog}`)
+//     })
 
-}
+// }
 
 
-const Julia = [3, 5, 2, 12, 7]
-const Kate = [4, 1, 15, 8, 3]
+// const Julia = [3, 5, 2, 12, 7]
+// const Kate = [4, 1, 15, 8, 3]
 
-checkDog(Julia, Kate)
-checkDog([9, 16, 6, 8, 3], [10, 5, 6, 1, 4])
+// checkDog(Julia, Kate)
+// checkDog([9, 16, 6, 8, 3], [10, 5, 6, 1, 4])
+
+// MAP, FILTER and REDUCE
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const euroToUsd = 1.1
+
+const movementUSD = movements.map((value)=> value * euroToUsd)
+console.log(movementUSD)
+
+const movementsDescriptions = movements.map((movement, index) => {
+    return `Movement ${index +1} You ${movement > 0 ? 'deposit' : 'withdrew'} ${Math.abs(movement)}`
+})
+
+console.log(movementsDescriptions)
