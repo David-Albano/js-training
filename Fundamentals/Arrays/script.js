@@ -356,34 +356,94 @@ const accounts = [account1, account2, account3, account4];
 // Sort method
 
 // Strings
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort());
-console.log(owners);
+// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+// console.log(owners.sort());
+// console.log(owners);
 
-// Numbers
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-console.log(movements);
+// // Numbers
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
 
-// return < 0, A, B (keep order)
-// return > 0, B, A (switch order)
+// // return < 0, A, B (keep order)
+// // return > 0, B, A (switch order)
 
-// Ascending
-// movements.sort((a, b) => {
-//   if (a > b) return 1;
-//   if (a < b) return -1;
-// });
+// // Ascending
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (a < b) return -1;
+// // });
 
-// We could say sort((a, b) => a - b (from smallest (a)) to (largest (b))
+// // We could say sort((a, b) => a - b (from smallest (a)) to (largest (b))
 
-movements.sort((a, b) => a - b);
-console.log(movements);
+// movements.sort((a, b) => a - b);
+// console.log(movements);
 
-// Descending
-// movements.sort((a, b) => {
-    //   if (a > b) return -1;
-    //   if (a < b) return 1;
-    // });
+// // Descending
+// // movements.sort((a, b) => {
+//     //   if (a > b) return -1;
+//     //   if (a < b) return 1;
+//     // });
 
-// We could say sort((a, b) => b - a (from largest (b)) to (smallest (a))
-movements.sort((a, b) => b - a);
-console.log(movements);
+// // We could say sort((a, b) => b - a (from largest (b)) to (smallest (a))
+// movements.sort((a, b) => b - a);
+// console.log(movements);
+
+// Arrays Method Practice
+
+// 1.
+const bankDepositSum = accounts
+    .flatMap(account => account.movements)
+    .filter(value => value > 0)
+    .reduce((sum, value) => sum + value, 0)
+
+console.log(bankDepositSum) 
+
+// 2.
+
+// const numDeposits1000 = accounts
+//     .flatMap(account => account.movements)
+//     .filter(value => value >= 1000).length
+
+// Same as above but with reduce method instead of filter method
+const numDeposits1000 = accounts
+    .flatMap(account => account.movements)
+    .reduce((count, value) => value >= 1000 ? ++count : count, 0)
+
+console.log(numDeposits1000) 
+
+// Prefixed ++ operator
+let a = 10
+// console.log(a++) // ---> 10 still
+console.log(++a) // ---> 11 now
+console.log(a) // ---> 11 now
+
+// 3.
+
+const {deposits, withdrawals} = accounts
+    .flatMap(account => account.movements)
+    .reduce((sum, value) => {
+        sum[value > 0 ? 'deposits' : 'withdrawals'] += value
+
+        return sum
+    }, {deposits : 0, withdrawals : 0,})
+
+console.log(deposits)
+console.log(withdrawals)
+
+// 4. 
+
+const convertTitleCase = function(title) {
+    const capitalize = str => str[0].toUpperCase() + str.slice(1)
+
+    const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+    return title
+        .toLowerCase()
+        .split(' ')
+        .map(word => !exceptions.includes(word) ? capitalize(word) : word)
+        .join(' ')
+}   
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('EXAMPLE of a title here to practice, a little bit Long one'))
+console.log(convertTitleCase('and here is another title with an EXAMPLE'))
