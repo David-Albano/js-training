@@ -1,5 +1,42 @@
 'use strict';
 
+const account1 = {
+    owner: 'David Afonso',
+    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+    interestRate: 1.2, // %
+    pin: 1111,
+};
+
+const account2 = {
+owner: 'Ricardo Matos',
+movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+interestRate: 1.5,
+pin: 2222,
+};
+
+const account3 = {
+owner: 'Ana Figueiredo',
+movements: [200, -200, 340, -300, -20, 50, 400, -460],
+interestRate: 0.7,
+pin: 3333,
+};
+
+const account4 = {
+owner: 'Sandra Souki',
+movements: [430, 1000, 700, 50, 90],
+interestRate: 1,
+pin: 4444,
+};
+
+const account5 = {
+owner: 'Marcos Pereira',
+movements: [-430, -1000, -700, -50, -90],
+interestRate: 1,
+pin: 5555,
+};
+
+const accounts = [account1, account2, account3, account4];
+
 /////////////////////////////////////////////////
 
 // let arr = ['a', 'b', 'c', 'd', 'e']
@@ -209,35 +246,83 @@
 // TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
 // TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
-const calcAverageHumanAge = dogAges => {
-    let humanAges = dogAges
-    .map((age) => age <= 2 ? age * 2 : 16 + age * 4)
-    .filter(age => age > 18)
+// const calcAverageHumanAge = dogAges => {
+//     let humanAges = dogAges
+//     .map((age) => age <= 2 ? age * 2 : 16 + age * 4)
+//     .filter(age => age > 18)
 
-    const average = humanAges.reduce((accumulator, age) => accumulator + age, 0) / humanAges.length
-    return Math.round(average * 100) / 100
-}
+//     const average = humanAges.reduce((accumulator, age) => accumulator + age, 0) / humanAges.length
+//     return Math.round(average * 100) / 100
+// }
 
-const calcAverageHumanAge2 = dogAges => 
-    dogAges
-    .map(age => age <= 2 ? age * 2 : 16 + age * 4)
-    .filter(age => age > 18)
-    .reduce((accumulator, age, index, array) => Math.round((accumulator + age / array.length) * 100) / 100, 0)
+// const calcAverageHumanAge2 = dogAges => 
+//     dogAges
+//     .map(age => age <= 2 ? age * 2 : 16 + age * 4)
+//     .filter(age => age > 18)
+//     .reduce((accumulator, age, index, array) => Math.round((accumulator + age / array.length) * 100) / 100, 0)
 
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]))
-console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]))
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]))
+// console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]))
 
-console.log(calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]))
-console.log(calcAverageHumanAge2([16, 6, 10, 5, 6, 1, 4]))
+// console.log(calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]))
+// console.log(calcAverageHumanAge2([16, 6, 10, 5, 6, 1, 4]))
 
 
-// Chaining methods
+// // Chaining methods
 
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const toUSD = 1.1
+
+// const convertToUSD = movements
+//                     .filter(value => value > 0)
+//                     .map(value => Math.round((value * toUSD) * 100) / 100)
+
+// console.log(convertToUSD)
+
+// Find method --> Return the first element (itself) that fulfill the condition
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const toUSD = 1.1
 
-const convertToUSD = movements
-                    .filter(value => value > 0)
-                    .map(value => Math.round((value * toUSD) * 100) / 100)
+const firstWithdrawal = movements.find(value => value < 0)
+console.log(firstWithdrawal)
 
-console.log(convertToUSD)
+const account = accounts.find(account => account.owner === 'David Afonso')
+console.log(account)
+
+
+// SOME method Return true if any of the elements of the array satisfy the condition
+
+// EQUALITY
+// console.log(movements)
+// console.log(movements.includes(-130))
+// console.log(movements.includes(-230))
+
+// CONDITION
+const anyDeposits = movements.some(value => value > 0) // ---> true
+console.log(anyDeposits)
+
+const anyDeposits1 = movements.some(value => value > 4000) // ---> false
+console.log(anyDeposits1)
+
+const anyDeposits2 = movements.some(value => value < -1500) // ---> false
+console.log(anyDeposits2)
+
+const anyDeposits3 = movements.some(value => value === 1300) // ---> true
+console.log(anyDeposits3)
+
+
+// EVERY method Return true if ALL THE ELEMENTS of the array satisfy the condition
+console.log(movements.every(value => value > 0)) // ---> false
+console.log(account4.movements.every(value => value > 0)) // ---> true
+
+// Separate callback
+
+const areDeposits = value => value > 0
+const areWithdrawals = value => value < 0
+
+console.log(account4.movements.every(areDeposits)) // ---> true
+console.log(account4.movements.every(areWithdrawals)) // ---> false
+console.log(account5.movements.every(areDeposits)) // ---> true
+console.log(account5.movements.every(areWithdrawals)) // ---> true
+
+console.log(account1.movements.some(areDeposits))
+console.log(account1.movements.filter(areDeposits))
