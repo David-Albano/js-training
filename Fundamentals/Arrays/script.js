@@ -138,16 +138,52 @@
 // checkDog([9, 16, 6, 8, 3], [10, 5, 6, 1, 4])
 
 // MAP, FILTER and REDUCE
+// Map method
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// const euroToUsd = 1.1
+
+// const movementUSD = movements.map((value)=> value * euroToUsd)
+// console.log(movementUSD)
+
+// const movementsDescriptions = movements.map((movement, index) => {
+//     return `Movement ${index +1} You ${movement > 0 ? 'deposit' : 'withdrew'} ${Math.abs(movement)}`
+// })
+
+// console.log(movementsDescriptions)
+
+// Find method
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-const euroToUsd = 1.1
-
-const movementUSD = movements.map((value)=> value * euroToUsd)
-console.log(movementUSD)
-
-const movementsDescriptions = movements.map((movement, index) => {
-    return `Movement ${index +1} You ${movement > 0 ? 'deposit' : 'withdrew'} ${Math.abs(movement)}`
+const deposits = movements.filter(function(value) {
+    return value > 0
 })
+console.log(deposits) // ---> [200, 450, 3000, 70, 1300]
 
-console.log(movementsDescriptions)
+const withdrawals = movements.filter((value) => value < 0)
+console.log('withdrawals: ', withdrawals)
+
+// Reduce method
+
+// accumulator --> SNOWBALL
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+
+const balance = movements.reduce((accumulator, value) => accumulator + value, 0)
+
+console.log(balance)
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// Maximum Value
+const maxValue = movements.reduce((accumulator, value) => accumulator = value > accumulator ? value : accumulator, 0)
+console.log(maxValue)
+
+// Maximum Value
+const minValue = movements.reduce((accumulator, value) => accumulator = value < accumulator ? value : accumulator, 0)
+console.log(minValue)
