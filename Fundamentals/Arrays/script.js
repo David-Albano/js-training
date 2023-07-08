@@ -280,49 +280,75 @@ const accounts = [account1, account2, account3, account4];
 // console.log(convertToUSD)
 
 // Find method --> Return the first element (itself) that fulfill the condition
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const firstWithdrawal = movements.find(value => value < 0)
-console.log(firstWithdrawal)
+// const firstWithdrawal = movements.find(value => value < 0)
+// console.log(firstWithdrawal)
 
-const account = accounts.find(account => account.owner === 'David Afonso')
-console.log(account)
-
-
-// SOME method Return true if any of the elements of the array satisfy the condition
-
-// EQUALITY
-// console.log(movements)
-// console.log(movements.includes(-130))
-// console.log(movements.includes(-230))
-
-// CONDITION
-const anyDeposits = movements.some(value => value > 0) // ---> true
-console.log(anyDeposits)
-
-const anyDeposits1 = movements.some(value => value > 4000) // ---> false
-console.log(anyDeposits1)
-
-const anyDeposits2 = movements.some(value => value < -1500) // ---> false
-console.log(anyDeposits2)
-
-const anyDeposits3 = movements.some(value => value === 1300) // ---> true
-console.log(anyDeposits3)
+// const account = accounts.find(account => account.owner === 'David Afonso')
+// console.log(account)
 
 
-// EVERY method Return true if ALL THE ELEMENTS of the array satisfy the condition
-console.log(movements.every(value => value > 0)) // ---> false
-console.log(account4.movements.every(value => value > 0)) // ---> true
+// // SOME method Return true if any of the elements of the array satisfy the condition
 
-// Separate callback
+// // EQUALITY
+// // console.log(movements)
+// // console.log(movements.includes(-130))
+// // console.log(movements.includes(-230))
 
-const areDeposits = value => value > 0
-const areWithdrawals = value => value < 0
+// // CONDITION
+// const anyDeposits = movements.some(value => value > 0) // ---> true
+// console.log(anyDeposits)
 
-console.log(account4.movements.every(areDeposits)) // ---> true
-console.log(account4.movements.every(areWithdrawals)) // ---> false
-console.log(account5.movements.every(areDeposits)) // ---> true
-console.log(account5.movements.every(areWithdrawals)) // ---> true
+// const anyDeposits1 = movements.some(value => value > 4000) // ---> false
+// console.log(anyDeposits1)
 
-console.log(account1.movements.some(areDeposits))
-console.log(account1.movements.filter(areDeposits))
+// const anyDeposits2 = movements.some(value => value < -1500) // ---> false
+// console.log(anyDeposits2)
+
+// const anyDeposits3 = movements.some(value => value === 1300) // ---> true
+// console.log(anyDeposits3)
+
+
+// // EVERY method Return true if ALL THE ELEMENTS of the array satisfy the condition
+// console.log(movements.every(value => value > 0)) // ---> false
+// console.log(account4.movements.every(value => value > 0)) // ---> true
+
+// // Separate callback
+
+// const areDeposits = value => value > 0
+// const areWithdrawals = value => value < 0
+
+// console.log(account4.movements.every(areDeposits)) // ---> true
+// console.log(account4.movements.every(areWithdrawals)) // ---> false
+// console.log(account5.movements.every(areDeposits)) // ---> true
+// console.log(account5.movements.every(areWithdrawals)) // ---> true
+
+// console.log(account1.movements.some(areDeposits))
+// console.log(account1.movements.filter(areDeposits))
+
+// flat method
+
+const arr = [[1, 2, 3, 4], [5, 6, 7, 8], 9, 10]
+console.log(arr.flat())
+
+const arrDeep = [[[[1, [2]], 3, 4], [5, [6, 7], 8], [9, [10]]]]
+console.log(arrDeep.flat(2))
+console.log(arrDeep.flat(3))
+console.log(arrDeep.flat(4))
+
+const totalBalanceAllMovements = accounts
+    .map(account => account.movements)
+    .flat()
+    .reduce((accumulator, value) => accumulator + value, 0)
+
+console.log(totalBalanceAllMovements)
+
+// flatMap --- Only goes to one deep level, 
+// so for deeper arrays levels flat method is needed instead
+
+const totalBalanceAllMovements2 = accounts
+    .flatMap(account => account.movements)
+    .reduce((accumulator, value) => accumulator + value, 0)
+
+console.log(totalBalanceAllMovements2)
