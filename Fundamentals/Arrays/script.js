@@ -329,26 +329,61 @@ const accounts = [account1, account2, account3, account4];
 
 // flat method
 
-const arr = [[1, 2, 3, 4], [5, 6, 7, 8], 9, 10]
-console.log(arr.flat())
+// const arr = [[1, 2, 3, 4], [5, 6, 7, 8], 9, 10]
+// console.log(arr.flat())
 
-const arrDeep = [[[[1, [2]], 3, 4], [5, [6, 7], 8], [9, [10]]]]
-console.log(arrDeep.flat(2))
-console.log(arrDeep.flat(3))
-console.log(arrDeep.flat(4))
+// const arrDeep = [[[[1, [2]], 3, 4], [5, [6, 7], 8], [9, [10]]]]
+// console.log(arrDeep.flat(2))
+// console.log(arrDeep.flat(3))
+// console.log(arrDeep.flat(4))
 
-const totalBalanceAllMovements = accounts
-    .map(account => account.movements)
-    .flat()
-    .reduce((accumulator, value) => accumulator + value, 0)
+// const totalBalanceAllMovements = accounts
+//     .map(account => account.movements)
+//     .flat()
+//     .reduce((accumulator, value) => accumulator + value, 0)
 
-console.log(totalBalanceAllMovements)
+// console.log(totalBalanceAllMovements)
 
-// flatMap --- Only goes to one deep level, 
-// so for deeper arrays levels flat method is needed instead
+// // flatMap --- Only goes to one deep level, 
+// // so for deeper arrays levels flat method is needed instead
 
-const totalBalanceAllMovements2 = accounts
-    .flatMap(account => account.movements)
-    .reduce((accumulator, value) => accumulator + value, 0)
+// const totalBalanceAllMovements2 = accounts
+//     .flatMap(account => account.movements)
+//     .reduce((accumulator, value) => accumulator + value, 0)
 
-console.log(totalBalanceAllMovements2)
+// console.log(totalBalanceAllMovements2)
+
+// Sort method
+
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+
+// We could say sort((a, b) => a - b (from smallest (a)) to (largest (b))
+
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+    //   if (a > b) return -1;
+    //   if (a < b) return 1;
+    // });
+
+// We could say sort((a, b) => b - a (from largest (b)) to (smallest (a))
+movements.sort((a, b) => b - a);
+console.log(movements);
