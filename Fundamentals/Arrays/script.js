@@ -152,38 +152,92 @@
 
 // console.log(movementsDescriptions)
 
-// Find method
+// Filter method
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-const deposits = movements.filter(function(value) {
-    return value > 0
-})
-console.log(deposits) // ---> [200, 450, 3000, 70, 1300]
+// const deposits = movements.filter(function(value) {
+//     return value > 0
+// })
+// console.log(deposits) // ---> [200, 450, 3000, 70, 1300]
 
-const withdrawals = movements.filter((value) => value < 0)
-console.log('withdrawals: ', withdrawals)
+// const withdrawals = movements.filter((value) => value < 0)
+// console.log('withdrawals: ', withdrawals)
 
-// Reduce method
+// // Reduce method
 
-// accumulator --> SNOWBALL
-// const balance = movements.reduce(function (acc, cur, i, arr) {
-//   console.log(`Iteration ${i}: ${acc}`);
-//   return acc + cur;
-// }, 0);
+// // accumulator --> SNOWBALL
+// // const balance = movements.reduce(function (acc, cur, i, arr) {
+// //   console.log(`Iteration ${i}: ${acc}`);
+// //   return acc + cur;
+// // }, 0);
 
-const balance = movements.reduce((accumulator, value) => accumulator + value, 0)
+// const balance = movements.reduce((accumulator, value) => accumulator + value, 0)
 
-console.log(balance)
+// console.log(balance)
 
-let balance2 = 0;
-for (const mov of movements) balance2 += mov;
-console.log(balance2);
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov;
+// console.log(balance2);
 
-// Maximum Value
-const maxValue = movements.reduce((accumulator, value) => accumulator = value > accumulator ? value : accumulator, 0)
-console.log(maxValue)
+// // Maximum Value
+// const maxValue = movements.reduce((accumulator, value) => accumulator = value > accumulator ? value : accumulator, 0)
+// console.log(maxValue)
 
-// Maximum Value
-const minValue = movements.reduce((accumulator, value) => accumulator = value < accumulator ? value : accumulator, 0)
-console.log(minValue)
+// // Maximum Value
+// const minValue = movements.reduce((accumulator, value) => accumulator = value < accumulator ? value : accumulator, 0)
+// console.log(minValue)
+
+
+// Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages 
+// to human ages and calculate the average age of the dogs in their study.
+
+// Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and 
+// does the following things in order:
+
+// 1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years
+// old, humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4.
+
+// 2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs 
+//     that are at least 18 years old)
+
+// 3. Calculate the average human age of all adult dogs (you should already know from other challenges 
+//     how we calculate averages 😉)
+
+// 4. Run the function for both test datasets
+
+// TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+// TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+const calcAverageHumanAge = dogAges => {
+    let humanAges = dogAges
+    .map((age) => age <= 2 ? age * 2 : 16 + age * 4)
+    .filter(age => age > 18)
+
+    const average = humanAges.reduce((accumulator, age) => accumulator + age, 0) / humanAges.length
+    return Math.round(average * 100) / 100
+}
+
+const calcAverageHumanAge2 = dogAges => 
+    dogAges
+    .map(age => age <= 2 ? age * 2 : 16 + age * 4)
+    .filter(age => age > 18)
+    .reduce((accumulator, age, index, array) => Math.round((accumulator + age / array.length) * 100) / 100, 0)
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]))
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]))
+
+console.log(calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]))
+console.log(calcAverageHumanAge2([16, 6, 10, 5, 6, 1, 4]))
+
+
+// Chaining methods
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const toUSD = 1.1
+
+const convertToUSD = movements
+                    .filter(value => value > 0)
+                    .map(value => Math.round((value * toUSD) * 100) / 100)
+
+console.log(convertToUSD)
